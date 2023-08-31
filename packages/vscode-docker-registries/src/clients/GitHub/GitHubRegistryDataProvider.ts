@@ -113,10 +113,13 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
                     nextSearchString = repository;
                 }
 
+                // we don't want to show the full path in the UI, just the repository name
+                const repositoryName = repository.replace(new RegExp('^' + originalSearchString, 'i'), '');
+                const repositoryUri = vscode.Uri.joinPath(registry.baseUrl, originalSearchString);
                 results.push({
                     parent: registry,
-                    baseUrl: registry.baseUrl,
-                    label: repository,
+                    baseUrl: repositoryUri,
+                    label: repositoryName,
                     type: 'commonrepository',
                 });
             }
