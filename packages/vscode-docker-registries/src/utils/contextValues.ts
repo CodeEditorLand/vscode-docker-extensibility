@@ -7,8 +7,9 @@ import { RegistryItem, isContextValueRegistryItem } from '../contracts/RegistryI
 
 export function getContextValue(element: RegistryItem, ...additional: string[]): string {
     const providedContextValues = isContextValueRegistryItem(element) ? element.additionalContextValues ?? [] : [];
+    const additionalContextValues = additional ?? [];
 
-    const allContextValues = [...additional, ...providedContextValues];
-    const contextValueSet = new Set(allContextValues);
-    return Array.from(contextValueSet).sort().join(';');
+    const allContextValues = providedContextValues.concat(additionalContextValues);
+    const contextValue = allContextValues.join(';') + ';';
+    return contextValue;
 }
