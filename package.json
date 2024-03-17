@@ -1,15 +1,13 @@
 {
-    "name": "@microsoft/vscode-docker-extensibility",
-    "author": "Microsoft Corporation",
-    "version": "0.0.0",
-    "workspaces": [
-        "packages/vscode-container-client",
-        "packages/vscode-docker-registries"
-    ],
-    "scripts": {
-        "lint": "npm run -ws lint",
-        "build": "npm run -ws build",
-        "package": "npm run -ws package",
-        "test": "npm run -ws test"
-    }
+  "name": "@microsoft/vscode-docker-extensibility",
+  "version": "0.0.0",
+  "author": "Microsoft Corporation",
+  "workspaces": [
+    "packages/vscode-container-client",
+    "packages/vscode-docker-registries"
+  ],
+  "scripts": {
+    "build": "npm run -ws build",
+    "package": "npm run -ws package"
+  }
 }
