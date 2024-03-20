@@ -1,45 +1,47 @@
 {
-    "name": "@microsoft/vscode-docker-registries",
-    "author": "Microsoft Corporation",
-    "version": "0.1.11",
-    "description": "Extensibility model for contributing registry providers to the Docker extension for Visual Studio Code",
-    "license": "See LICENSE in the project root for license information.",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/microsoft/vscode-docker-extensibility"
-    },
-    "bugs": {
-        "url": "https://github.com/microsoft/vscode-docker-extensibility/issues"
-    },
-    "homepage": "https://github.com/microsoft/vscode-docker-extensibility/blob/main/packages/vscode-docker-registries/README.md",
-    "keywords": [
-        "vscode",
-        "docker"
-    ],
-    "main": "lib/index.js",
-    "types": "lib/index.d.ts",
-    "scripts": {
-        "build": "tsc",
-        "lint": "eslint --max-warnings 0 . --ext ts",
-        "test": "mocha --file lib/test/global.test.js --recursive lib/test",
-        "unittest": "npm test -- --grep /unit/i",
-        "package": "npm pack"
-    },
-    "devDependencies": {
-        "@types/chai": "4.3.13",
-        "@types/chai-as-promised": "7.1.8",
-        "@types/mocha": "10.0.6",
-        "@types/node": "20.x",
-        "@types/vscode": "1.87.0",
-        "@typescript-eslint/eslint-plugin": "7.3.1",
-        "@typescript-eslint/parser": "7.3.1",
-        "chai": "5.1.0",
-        "chai-as-promised": "7.1.1",
-        "eslint": "8.57.0",
-        "mocha": "10.3.0",
-        "typescript": "5.4.2"
-    },
-    "dependencies": {
-        "dayjs": "1.11.10"
-    }
+	"name": "@microsoft/vscode-docker-registries",
+	"version": "0.0.1",
+	"private": false,
+	"description": "Extensibility model for contributing registry providers to the Docker extension for Visual Studio Code",
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"package": "npm pack",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"unittest": "npm test -- --grep /unit/i"
+	},
+	"dependencies": {
+		"dayjs": "1.11.10"
+	},
+	"devDependencies": {
+		"@types/chai": "4.3.13",
+		"@types/chai-as-promised": "7.1.8",
+		"@types/mocha": "10.0.6",
+		"@types/node": "20.x",
+		"@types/vscode": "1.87.0",
+		"chai": "5.1.0",
+		"chai-as-promised": "7.1.1",
+		"mocha": "10.3.0",
+		"typescript": "5.4.2",
+		"typescript-esbuild": "latest"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

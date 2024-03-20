@@ -1,60 +1,66 @@
 {
-    "name": "@microsoft/vscode-container-client",
-    "author": "Microsoft Corporation",
-    "version": "0.1.2",
-    "description": "Extensibility model for implementing container runtime providers (shared by VS and VS Code)",
-    "license": "See LICENSE in the project root for license information.",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/microsoft/vscode-docker-extensibility"
-    },
-    "bugs": {
-        "url": "https://github.com/microsoft/vscode-docker-extensibility/issues"
-    },
-    "homepage": "https://github.com/microsoft/vscode-docker-extensibility/blob/main/packages/vscode-container-client/README.md",
-    "main": "lib/index.js",
-    "scripts": {
-        "build": "tsc",
-        "clean": "tsc --build --clean",
-        "lint": "eslint --max-warnings 0 . --ext ts",
-        "package": "npm pack",
-        "test": "mocha",
-        "testwatch": "mocha --watch",
-        "testreport": "mocha --reporter mocha-junit-reporter"
-    },
-    "dependencies": {
-        "dayjs": "1.11.10",
-        "tree-kill": "1.2.2"
-    },
-    "devDependencies": {
-        "@types/chai": "4.3.13",
-        "@types/mocha": "10.0.6",
-        "@types/node": "20.x",
-        "@types/vscode": "1.87.0",
-        "@typescript-eslint/eslint-plugin": "7.3.1",
-        "@typescript-eslint/parser": "7.3.1",
-        "chai": "5.1.0",
-        "eslint": "8.57.0",
-        "mocha": "10.3.0",
-        "mocha-junit-reporter": "2.2.1",
-        "ts-node": "10.9.2",
-        "tsconfig-paths": "4.2.0",
-        "typescript": "5.4.2",
-        "vscode-jsonrpc": "8.2.0"
-    },
-    "mocha": {
-        "extension": [
-            "ts"
-        ],
-        "require": [
-            "ts-node/register",
-            "./src/test/tsconfig-paths-bootstrap.js"
-        ],
-        "spec": [
-            "src/test/**/*.test.ts"
-        ],
-        "watch-files": [
-            "src/**/*.ts"
-        ]
-    }
+	"name": "@microsoft/vscode-container-client",
+	"version": "0.0.1",
+	"private": false,
+	"description": "Extensibility model for implementing container runtime providers (shared by VS and VS Code)",
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"bugs": {
+		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"main": "lib/index.js",
+	"scripts": {
+		"build": "tsc",
+		"clean": "tsc --build --clean",
+		"package": "npm pack",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"testreport": "mocha --reporter mocha-junit-reporter",
+		"testwatch": "mocha --watch"
+	},
+	"mocha": {
+		"extension": [
+			"ts"
+		],
+		"require": [
+			"ts-node/register",
+			"./src/test/tsconfig-paths-bootstrap.js"
+		],
+		"spec": [
+			"src/test/**/*.test.ts"
+		],
+		"watch-files": [
+			"src/**/*.ts"
+		]
+	},
+	"dependencies": {
+		"dayjs": "1.11.10",
+		"tree-kill": "1.2.2"
+	},
+	"devDependencies": {
+		"@types/chai": "4.3.13",
+		"@types/mocha": "10.0.6",
+		"@types/node": "20.x",
+		"@types/vscode": "1.87.0",
+		"chai": "5.1.0",
+		"mocha": "10.3.0",
+		"mocha-junit-reporter": "2.2.1",
+		"ts-node": "10.9.2",
+		"tsconfig-paths": "4.2.0",
+		"typescript": "5.4.2",
+		"typescript-esbuild": "latest",
+		"vscode-jsonrpc": "8.2.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
