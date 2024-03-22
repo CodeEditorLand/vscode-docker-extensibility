@@ -1,16 +1,34 @@
 {
-	"author": {
-		"email": "Hello@Playform.Cloud",
-		"name": "Playform",
-		"url": "https://playform.cloud"
-	},
+	"name": "@microsoft/vscode-docker-registries",
+	"version": "0.0.1",
+	"private": false,
+	"description": "Extensibility model for contributing registry providers to the Docker extension for Visual Studio Code",
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
 	"bugs": {
 		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"main": "lib/index.js",
+	"types": "lib/index.d.ts",
+	"scripts": {
+		"build": "tsc",
+		"package": "npm pack",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"unittest": "npm test -- --grep /unit/i"
 	},
 	"dependencies": {
 		"dayjs": "1.11.10"
 	},
-	"description": "Extensibility model for contributing registry providers to the Docker extension for Visual Studio Code",
 	"devDependencies": {
 		"@types/chai": "4.3.13",
 		"@types/chai-as-promised": "7.1.8",
@@ -23,25 +41,7 @@
 		"typescript": "5.4.2",
 		"typescript-esbuild": "0.4.5"
 	},
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
-	"license": "SEE LICENSE IN LICENSE",
-	"main": "lib/index.js",
-	"name": "@microsoft/vscode-docker-registries",
-	"private": false,
 	"publishConfig": {
 		"access": "public"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
-	},
-	"scripts": {
-		"build": "tsc",
-		"package": "npm pack",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"unittest": "npm test -- --grep /unit/i"
-	},
-	"type": "module",
-	"types": "lib/index.d.ts",
-	"version": "0.0.1"
+	}
 }

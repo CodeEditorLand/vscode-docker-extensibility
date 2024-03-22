@@ -1,35 +1,35 @@
 {
-	"author": {
-		"email": "Hello@Playform.Cloud",
-		"name": "Playform",
-		"url": "https://playform.cloud"
-	},
+	"name": "@microsoft/vscode-docker-extensibility",
+	"version": "0.0.1",
+	"private": false,
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
 	"bugs": {
 		"url": "https://github.com/CodeEditorLand/Foundation/issues"
-	},
-	"devDependencies": {
-		"typescript-esbuild": ""
-	},
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
-	"license": "SEE LICENSE IN LICENSE",
-	"name": "@microsoft/vscode-docker-extensibility",
-	"private": false,
-	"publishConfig": {
-		"access": "public"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
 	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"workspaces": [
+		"packages/vscode-container-client",
+		"packages/vscode-docker-registries"
+	],
 	"scripts": {
 		"build": "npm run -ws build",
 		"package": "npm run -ws package",
 		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
 	},
-	"type": "module",
-	"version": "0.0.1",
-	"workspaces": [
-		"packages/vscode-container-client",
-		"packages/vscode-docker-registries"
-	]
+	"devDependencies": {
+		"typescript-esbuild": "0.4.5"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
