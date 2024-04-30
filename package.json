@@ -1,15 +1,39 @@
 {
-    "name": "@microsoft/vscode-docker-extensibility",
-    "author": "Microsoft Corporation",
-    "version": "0.0.0",
-    "workspaces": [
-        "packages/vscode-container-client",
-        "packages/vscode-docker-registries"
-    ],
-    "scripts": {
-        "lint": "npm run -ws lint",
-        "build": "npm run -ws build",
-        "package": "npm run -ws package",
-        "test": "npm run -ws test"
-    }
+	"name": "@microsoft/vscode-docker-extensibility",
+	"version": "0.0.1",
+	"private": false,
+	"keywords": [
+		"land"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandDockerExtensibility#readme",
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandDockerExtensibility/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandDockerExtensibility.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "🌆 — Land —",
+		"email": "Land@PlayForm.Cloud",
+		"url": "HTTPS://Land.PlayForm.Cloud"
+	},
+	"type": "module",
+	"workspaces": [
+		"packages/vscode-container-client",
+		"packages/vscode-docker-registries"
+	],
+	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
+		"build": "npm run -ws build",
+		"prepublishOnly": "Build 'Source/**/*.ts'"
+	},
+	"devDependencies": {
+		"@playform/build": "0.0.7",
+		"@playform/document": "0.0.6"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
