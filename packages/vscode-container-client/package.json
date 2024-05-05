@@ -3,27 +3,30 @@
 	"version": "0.0.1",
 	"private": false,
 	"description": "Extensibility model for implementing container runtime providers (shared by VS and VS Code)",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"keywords": [
+		"land"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandDockerExtensibility#readme",
 	"bugs": {
-		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandDockerExtensibility/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandDockerExtensibility.git"
 	},
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
-		"name": "Playform",
-		"email": "Hello@Playform.Cloud",
-		"url": "https://playform.cloud"
+		"name": "🌆 — Land —",
+		"email": "Land@PlayForm.Cloud",
+		"url": "HTTPS://Land.PlayForm.Cloud"
 	},
 	"type": "module",
 	"main": "lib/index.js",
 	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
 		"build": "tsc",
 		"clean": "tsc --build --clean",
-		"package": "npm pack",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"prepublishOnly": "Build 'Source/**/*.ts'",
 		"testreport": "mocha --reporter mocha-junit-reporter",
 		"testwatch": "mocha --watch"
 	},
@@ -43,22 +46,16 @@
 		]
 	},
 	"dependencies": {
-		"dayjs": "1.11.10",
+		"dayjs": "1.11.11",
 		"tree-kill": "1.2.2"
 	},
 	"devDependencies": {
-		"@types/chai": "4.3.13",
-		"@types/mocha": "10.0.6",
+		"@playform/build": "0.0.7",
+		"@playform/document": "0.0.6",
+		"@types/chai": "4.3.14",
 		"@types/node": "20.x",
-		"@types/vscode": "1.87.0",
 		"chai": "5.1.0",
-		"mocha": "10.3.0",
-		"mocha-junit-reporter": "2.2.1",
-		"ts-node": "10.9.2",
-		"tsconfig-paths": "4.2.0",
-		"typescript": "5.4.2",
-		"typescript-esbuild": "0.4.5",
-		"vscode-jsonrpc": "8.2.0"
+		"tsconfig-paths": "4.2.0"
 	},
 	"publishConfig": {
 		"access": "public"

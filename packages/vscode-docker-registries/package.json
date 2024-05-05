@@ -3,43 +3,43 @@
 	"version": "0.0.1",
 	"private": false,
 	"description": "Extensibility model for contributing registry providers to the Docker extension for Visual Studio Code",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
+	"keywords": [
+		"land"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandDockerExtensibility#readme",
 	"bugs": {
-		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandDockerExtensibility/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandDockerExtensibility.git"
 	},
 	"license": "SEE LICENSE IN LICENSE",
 	"author": {
-		"name": "Playform",
-		"email": "Hello@Playform.Cloud",
-		"url": "https://playform.cloud"
+		"name": "🌆 — Land —",
+		"email": "Land@PlayForm.Cloud",
+		"url": "HTTPS://Land.PlayForm.Cloud"
 	},
 	"type": "module",
 	"main": "lib/index.js",
 	"types": "lib/index.d.ts",
 	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
 		"build": "tsc",
-		"package": "npm pack",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"prepublishOnly": "Build 'Source/**/*.ts'",
 		"unittest": "npm test -- --grep /unit/i"
 	},
 	"dependencies": {
-		"dayjs": "1.11.10"
+		"dayjs": "1.11.11"
 	},
 	"devDependencies": {
-		"@types/chai": "4.3.13",
+		"@playform/build": "0.0.7",
+		"@playform/document": "0.0.6",
+		"@types/chai": "4.3.14",
 		"@types/chai-as-promised": "7.1.8",
-		"@types/mocha": "10.0.6",
 		"@types/node": "20.x",
-		"@types/vscode": "1.87.0",
 		"chai": "5.1.0",
-		"chai-as-promised": "7.1.1",
-		"mocha": "10.3.0",
-		"typescript": "5.4.2",
-		"typescript-esbuild": "0.4.5"
+		"chai-as-promised": "7.1.1"
 	},
 	"publishConfig": {
 		"access": "public"
