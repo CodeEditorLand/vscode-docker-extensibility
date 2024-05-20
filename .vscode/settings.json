@@ -1,0 +1,19 @@
+{
+    "eslint.validate": [
+        "typescript"
+    ],
+    "eslint.workingDirectories": [
+        "./packages/vscode-container-client",
+        "./packages/vscode-docker-registries"
+    ],
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    },
+    "git.branchProtection": [
+        "main",
+        "rel/*"
+    ],
+}
