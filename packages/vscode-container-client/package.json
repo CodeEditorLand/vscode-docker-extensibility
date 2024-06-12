@@ -1,14 +1,14 @@
 {
 	"dependencies": {
-		"dayjs": "^1.11.11",
-		"tree-kill": "^1.2.2"
+		"dayjs": "1.11.11",
+		"tree-kill": "1.2.2"
 	},
 	"description": "Extensibility model for implementing container runtime providers (shared by VS and VS Code)",
 	"devDependencies": {
-		"@types/chai": "^4.3.16",
+		"@types/chai": "4.3.16",
 		"@types/node": "20.x",
-		"chai": "^5.1.1",
-		"tsconfig-paths": "^4.2.0"
+		"chai": "5.1.1",
+		"tsconfig-paths": "4.2.0"
 	},
 	"main": "lib/index.js",
 	"mocha": {
