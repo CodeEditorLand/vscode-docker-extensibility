@@ -6,5 +6,8 @@
 import { withNamedArg } from "../../utils/commandLineBuilder";
 
 export function withDockerEnvArg(env?: Record<string, string>) {
-    return withNamedArg('--env', Object.entries(env || {}).map(([key, value]) => `${key}=${value}`));
+	return withNamedArg(
+		"--env",
+		Object.entries(env || {}).map(([key, value]) => `${key}=${value}`),
+	);
 }

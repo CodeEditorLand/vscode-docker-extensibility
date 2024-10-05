@@ -4,13 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 export class CommandNotSupportedError extends Error {
-    constructor(message: string) {
-        super(message);
-        this.name = this.constructor.name;
-    }
+	constructor(message: string) {
+		super(message);
+		this.name = this.constructor.name;
+	}
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function isCommandNotSupportedError(err: any): err is CommandNotSupportedError {
-    return err?.name === CommandNotSupportedError.name;
+export function isCommandNotSupportedError(
+	err: any,
+): err is CommandNotSupportedError {
+	return err?.name === CommandNotSupportedError.name;
 }

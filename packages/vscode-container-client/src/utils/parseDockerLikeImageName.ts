@@ -3,7 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import type { ImageNameInfo } from '../contracts/ContainerClient';
+import type { ImageNameInfo } from "../contracts/ContainerClient";
 
 /**
  * A regex for parsing image names. Because this is only used to parse CLI output, we can assume
@@ -19,7 +19,8 @@ import type { ImageNameInfo } from '../contracts/ContainerClient';
  *
  * Tag: Everything after the ":", if it is present.
  */
-const imageNameRegex = /^((?<registry>((localhost|([\w-]+(\.[\w-]+)+))(:\d+)?)|([\w-]+:\d+))\/)?(?<image>[\w-./<>]+)(:(?<tag>[\w-.<>]+))?(@(?<digest>.+))?$/;
+const imageNameRegex =
+	/^((?<registry>((localhost|([\w-]+(\.[\w-]+)+))(:\d+)?)|([\w-]+:\d+))\/)?(?<image>[\w-./<>]+)(:(?<tag>[\w-.<>]+))?(@(?<digest>.+))?$/;
 
 // In certain cases, Docker makes image/tag names "<none>", which is not really valid. We will reinterpret those as `undefined`.
 const noneImageName = /[<>]/i;
@@ -30,26 +31,28 @@ const noneImageName = /[<>]/i;
  * @returns The separated registry, image, and tag, along with the input original name
  * and a verbose name composed of as much information as possible.
  */
-export function parseDockerLikeImageName(originalName: string | undefined): ImageNameInfo {
-    if (!originalName) {
-        return {
-            originalName,
-        };
-    }
+export function parseDockerLikeImageName(
+	originalName: string | undefined,
+): ImageNameInfo {
+	if (!originalName) {
+		return {
+			originalName,
+		};
+	}
 
-    const match = imageNameRegex.exec(originalName);
+	const match = imageNameRegex.exec(originalName);
 
-    if (!match || !match.groups) {
-        throw new Error('Invalid image name');
-    }
+	if (!match || !match.groups) {
+		throw new Error("Invalid image name");
+	}
 
-    const { registry, image, tag, digest } = match.groups;
+	const { registry, image, tag, digest } = match.groups;
 
-    return {
-        originalName,
-        image: noneImageName.test(image) ? undefined : image,
-        tag: noneImageName.test(tag) ? undefined : tag,
-        digest,
-        registry,
-    };
+	return {
+		originalName,
+		image: noneImageName.test(image) ? undefined : image,
+		tag: noneImageName.test(tag) ? undefined : tag,
+		digest,
+		registry,
+	};
 }

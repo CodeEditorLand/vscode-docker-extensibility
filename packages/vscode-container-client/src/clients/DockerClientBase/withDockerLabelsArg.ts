@@ -7,8 +7,10 @@ import { Labels } from "../../contracts/ContainerClient";
 import { withNamedArg } from "../../utils/commandLineBuilder";
 
 export function withDockerLabelsArg(labels?: Labels) {
-    return withNamedArg(
-        '--label',
-        Object.entries(labels || {}).map(([label, value]) => `${label}=${value}`),
-    );
+	return withNamedArg(
+		"--label",
+		Object.entries(labels || {}).map(
+			([label, value]) => `${label}=${value}`,
+		),
+	);
 }

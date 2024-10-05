@@ -11,15 +11,17 @@
  * @param expr Expression components of a template string
  * @returns The resulting string where string literals before an expression are conditionally excluded
  */
-export function conditional(strings: TemplateStringsArray, ...expr: Array<string | null | undefined>): string {
-    return expr.reduce<string>(
-        (accumulator, currentExpr, index) => {
-            if (!!currentExpr) {
-                return accumulator + strings[index] + currentExpr;
-            }
+export function conditional(
+	strings: TemplateStringsArray,
+	...expr: Array<string | null | undefined>
+): string {
+	return (
+		(expr.reduce<string>((accumulator, currentExpr, index) => {
+			if (!!currentExpr) {
+				return accumulator + strings[index] + currentExpr;
+			}
 
-            return accumulator;
-        },
-        '',
-    ) as string + strings.slice(-1); // A bug in the Inlay Hints feature is fixed by this redundant `as string` casting
+			return accumulator;
+		}, "") as string) + strings.slice(-1)
+	); // A bug in the Inlay Hints feature is fixed by this redundant `as string` casting
 }

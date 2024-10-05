@@ -3,9 +3,14 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { ReadFileCommandOptions, WriteFileCommandOptions } from "../../contracts/ContainerClient";
+import {
+	ReadFileCommandOptions,
+	WriteFileCommandOptions,
+} from "../../contracts/ContainerClient";
 import { CommandLineCurryFn, withArg } from "../../utils/commandLineBuilder";
 
-export function withContainerPathArg(options: ReadFileCommandOptions | WriteFileCommandOptions): CommandLineCurryFn {
-    return withArg(`${options.container}:${options.path}`);
+export function withContainerPathArg(
+	options: ReadFileCommandOptions | WriteFileCommandOptions,
+): CommandLineCurryFn {
+	return withArg(`${options.container}:${options.path}`);
 }

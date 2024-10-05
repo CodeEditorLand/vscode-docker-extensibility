@@ -7,23 +7,24 @@ import { RegistryWizardContext } from "./RegistryWizardContext";
 import { RegistryWizardPromptStep } from "./RegistryWizardPromptStep";
 
 export class RegistryWizard<T extends RegistryWizardContext> {
-    private readonly promptSteps: RegistryWizardPromptStep<T>[];
-    private readonly context: T;
+	private readonly promptSteps: RegistryWizardPromptStep<T>[];
+	private readonly context: T;
 
-    public constructor(context: T, steps: RegistryWizardPromptStep<T>[]) {
-        this.promptSteps = steps.reverse();
-        this.context = context;
-    }
+	public constructor(context: T, steps: RegistryWizardPromptStep<T>[]) {
+		this.promptSteps = steps.reverse();
+		this.context = context;
+	}
 
-    public async prompt(): Promise<void> {
-        let step: RegistryWizardPromptStep<T> | undefined = this.promptSteps.pop();
+	public async prompt(): Promise<void> {
+		let step: RegistryWizardPromptStep<T> | undefined =
+			this.promptSteps.pop();
 
-        while (step) {
-            if (step.shouldPrompt(this.context)) {
-                await step.prompt(this.context);
-            }
+		while (step) {
+			if (step.shouldPrompt(this.context)) {
+				await step.prompt(this.context);
+			}
 
-            step = this.promptSteps.pop();
-        }
-    }
+			step = this.promptSteps.pop();
+		}
+	}
 }

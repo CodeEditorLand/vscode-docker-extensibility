@@ -9,5 +9,5 @@
  * @returns An array of string IDs
  */
 export function asIds(output: string) {
-    return output.split('\n').filter((id) => id);
+	return output.split("\n").filter((id) => id);
 }

@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 export interface BasicCredentials {
-    readonly username: string;
-    readonly secret: string;
+	readonly username: string;
+	readonly secret: string;
 }
 
 export interface LoginInformation extends BasicCredentials {
-    readonly server: string;
+	readonly server: string;
 }

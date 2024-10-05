@@ -3,6 +3,9 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import { withNamedArg } from '../../utils/commandLineBuilder';
+import { withNamedArg } from "../../utils/commandLineBuilder";
 
-export const withDockerIgnoreSizeArg = withNamedArg('--size','false', { assignValue: true, shouldQuote: false });
+export const withDockerIgnoreSizeArg = withNamedArg("--size", "false", {
+	assignValue: true,
+	shouldQuote: false,
+});

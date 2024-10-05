@@ -7,9 +7,9 @@ import { RunContainerExtraHost } from "../../contracts/ContainerClient";
 import { withNamedArg } from "../../utils/commandLineBuilder";
 
 export function formatAddHost(addHost: RunContainerExtraHost): string {
-    return `${addHost.hostname}:${addHost.ip}`;
+	return `${addHost.hostname}:${addHost.ip}`;
 }
 
 export function withDockerAddHostArg(addHosts?: Array<RunContainerExtraHost>) {
-    return withNamedArg('--add-host', (addHosts || []).map(formatAddHost));
+	return withNamedArg("--add-host", (addHosts || []).map(formatAddHost));
 }

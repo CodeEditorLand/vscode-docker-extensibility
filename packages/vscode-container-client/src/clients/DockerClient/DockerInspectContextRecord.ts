@@ -4,13 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 export type DockerInspectContextRecord = {
-    Name: string;
-    Metadata?: {
-        Description?: string;
-    }
+	Name: string;
+	Metadata?: {
+		Description?: string;
+	};
 };
 
 // TODO: Actually test properties
-export function isDockerInspectContextRecord(maybeContext: unknown): maybeContext is DockerInspectContextRecord {
-    return true;
+export function isDockerInspectContextRecord(
+	maybeContext: unknown,
+): maybeContext is DockerInspectContextRecord {
+	return true;
 }

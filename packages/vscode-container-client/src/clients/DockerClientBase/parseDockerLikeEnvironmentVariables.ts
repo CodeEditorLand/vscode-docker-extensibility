@@ -8,19 +8,21 @@
  * @param environmentVariables A Docker like list of key=value environment variables
  * @returns An object of key value pairs for the environment variables
  */
-export function parseDockerLikeEnvironmentVariables(environmentVariables: Array<string>): Record<string, string> {
-    return environmentVariables.reduce<Record<string, string>>((evs, ev) => {
-        const index = ev.indexOf('=');
-        if (index > -1) {
-            const name = ev.slice(0, index);
-            const value = ev.slice(index + 1);
+export function parseDockerLikeEnvironmentVariables(
+	environmentVariables: Array<string>,
+): Record<string, string> {
+	return environmentVariables.reduce<Record<string, string>>((evs, ev) => {
+		const index = ev.indexOf("=");
+		if (index > -1) {
+			const name = ev.slice(0, index);
+			const value = ev.slice(index + 1);
 
-            return {
-                ...evs,
-                [name]: value,
-            };
-        }
+			return {
+				...evs,
+				[name]: value,
+			};
+		}
 
-        return evs;
-    }, {});
+		return evs;
+	}, {});
 }

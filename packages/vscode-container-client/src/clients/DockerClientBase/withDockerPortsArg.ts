@@ -7,16 +7,16 @@ import { PortBinding } from "../../contracts/ContainerClient";
 import { withNamedArg } from "../../utils/commandLineBuilder";
 
 export function withDockerPortsArg(ports?: Array<PortBinding>) {
-    return withNamedArg(
-        '--publish',
-        (ports || []).map((port) => {
-            let binding = port.hostIp ? `${port.hostIp}:` : '';
-            binding += `${port.hostPort || ''}:`;
-            binding += port.containerPort;
-            if (port.protocol) {
-                binding += `/${port.protocol}`;
-            }
-            return binding;
-        }),
-    );
+	return withNamedArg(
+		"--publish",
+		(ports || []).map((port) => {
+			let binding = port.hostIp ? `${port.hostIp}:` : "";
+			binding += `${port.hostPort || ""}:`;
+			binding += port.containerPort;
+			if (port.protocol) {
+				binding += `/${port.protocol}`;
+			}
+			return binding;
+		}),
+	);
 }

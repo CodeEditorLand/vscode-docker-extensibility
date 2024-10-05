@@ -9,5 +9,5 @@
  * @returns params as an array
  */
 export function toArray<T>(...params: Array<Array<T> | T>): Array<T> {
-    return ([] as Array<T>).concat(...params);
+	return ([] as Array<T>).concat(...params);
 }
