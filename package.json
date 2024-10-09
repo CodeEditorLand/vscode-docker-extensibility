@@ -1,10 +1,10 @@
 {
 	"name": "@microsoft/vscode-docker-extensibility",
-	"scripts": {
-		"build": "npm run -ws build"
-	},
 	"workspaces": [
 		"packages/vscode-container-client",
 		"packages/vscode-docker-registries"
-	]
+	],
+	"scripts": {
+		"build": "npm run -ws build"
+	}
 }
