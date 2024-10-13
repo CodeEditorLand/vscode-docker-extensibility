@@ -8,14 +8,16 @@ import { withNamedArg } from "../../utils/commandLineBuilder";
 import { getNativeArchitecture } from "../../utils/getNativeArchitecture";
 import { normalizeContainerOS } from "../../utils/normalizeContainerOS";
 
-export function formatDockerPlatform(platform?: ContainerPlatform): string | undefined {
-    if (!platform?.os && !platform?.architecture) {
-        return undefined;
-    }
-    const os = normalizeContainerOS(platform?.os);
-    const architecture = platform?.architecture || getNativeArchitecture();
+export function formatDockerPlatform(
+	platform?: ContainerPlatform,
+): string | undefined {
+	if (!platform?.os && !platform?.architecture) {
+		return undefined;
+	}
+	const os = normalizeContainerOS(platform?.os);
+	const architecture = platform?.architecture || getNativeArchitecture();
 
-    return `${os}/${architecture}`;
+	return `${os}/${architecture}`;
 }
 
 /**
@@ -32,5 +34,5 @@ export function formatDockerPlatform(platform?: ContainerPlatform): string | und
  * @returns
  */
 export function withDockerPlatformArg(platform?: ContainerPlatform) {
-    return withNamedArg('--platform', formatDockerPlatform(platform));
+	return withNamedArg("--platform", formatDockerPlatform(platform));
 }

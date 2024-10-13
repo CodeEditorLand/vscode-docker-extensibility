@@ -3,60 +3,77 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import * as vscode from 'vscode';
-import { AuthenticationProvider } from '../contracts/AuthenticationProvider';
-import { LoginInformation } from '../contracts/BasicCredentials';
-import { DockerHubRequestUrl, DockerHubSignInUrl } from '../clients/DockerHub/DockerHubRegistryDataProvider';
-import { httpRequest } from '../utils/httpRequest';
-import { BasicAuthProvider } from './BasicAuthProvider';
+import * as vscode from "vscode";
 
-export class DockerHubAuthProvider extends BasicAuthProvider implements AuthenticationProvider {
-    // TODO: this token expires after a month, should we bother to actually refresh it?
-    #token: string | undefined;
+import {
+	DockerHubRequestUrl,
+	DockerHubSignInUrl,
+} from "../clients/DockerHub/DockerHubRegistryDataProvider";
+import { AuthenticationProvider } from "../contracts/AuthenticationProvider";
+import { LoginInformation } from "../contracts/BasicCredentials";
+import { httpRequest } from "../utils/httpRequest";
+import { BasicAuthProvider } from "./BasicAuthProvider";
 
-    public constructor(storageMemento: vscode.Memento, secretStorage: vscode.SecretStorage) {
-        super(storageMemento, secretStorage, 'DockerHub');
-    }
+export class DockerHubAuthProvider
+	extends BasicAuthProvider
+	implements AuthenticationProvider
+{
+	// TODO: this token expires after a month, should we bother to actually refresh it?
+	#token: string | undefined;
 
-    public async getSession(scopes: string[], options?: vscode.AuthenticationGetSessionOptions): Promise<vscode.AuthenticationSession & { type: string }> {
-        const creds = await this.getBasicCredentials();
+	public constructor(
+		storageMemento: vscode.Memento,
+		secretStorage: vscode.SecretStorage,
+	) {
+		super(storageMemento, secretStorage, "DockerHub");
+	}
 
-        if (!this.#token || options?.forceNewSession) {
-            const requestUrl = DockerHubRequestUrl
-                .with({ path: `v2/users/login` });
+	public async getSession(
+		scopes: string[],
+		options?: vscode.AuthenticationGetSessionOptions,
+	): Promise<vscode.AuthenticationSession & { type: string }> {
+		const creds = await this.getBasicCredentials();
 
-            const response = await httpRequest<{ token: string }>(requestUrl.toString(), {
-                method: 'POST',
-                // eslint-disable-next-line @typescript-eslint/naming-convention
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    username: creds.username,
-                    password: creds.secret,
-                })
-            });
+		if (!this.#token || options?.forceNewSession) {
+			const requestUrl = DockerHubRequestUrl.with({
+				path: `v2/users/login`,
+			});
 
-            this.#token = (await response.json()).token;
-        }
+			const response = await httpRequest<{ token: string }>(
+				requestUrl.toString(),
+				{
+					method: "POST",
+					// eslint-disable-next-line @typescript-eslint/naming-convention
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({
+						username: creds.username,
+						password: creds.secret,
+					}),
+				},
+			);
 
-        return {
-            id: creds.username,
-            type: 'Bearer',
-            accessToken: this.#token,
-            account: {
-                label: creds.username,
-                id: creds.username,
-            },
-            scopes: scopes,
-        };
-    }
+			this.#token = (await response.json()).token;
+		}
 
-    public async getLoginInformation(): Promise<LoginInformation> {
-        const credentials = await this.getBasicCredentials();
+		return {
+			id: creds.username,
+			type: "Bearer",
+			accessToken: this.#token,
+			account: {
+				label: creds.username,
+				id: creds.username,
+			},
+			scopes: scopes,
+		};
+	}
 
-        return {
-            server: DockerHubSignInUrl,
-            username: credentials.username,
-            secret: credentials.secret,
-        };
-    }
+	public async getLoginInformation(): Promise<LoginInformation> {
+		const credentials = await this.getBasicCredentials();
+
+		return {
+			server: DockerHubSignInUrl,
+			username: credentials.username,
+			secret: credentials.secret,
+		};
+	}
 }

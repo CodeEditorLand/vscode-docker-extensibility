@@ -6,16 +6,18 @@
 import { ContainerOS, isContainerOS } from "../../contracts/ContainerClient";
 
 export type DockerInfoRecord = {
-    OperatingSystem?: string;
-    OSType?: ContainerOS;
+	OperatingSystem?: string;
+	OSType?: ContainerOS;
 };
 
-export function isDockerInfoRecord(maybeInfo: unknown): maybeInfo is DockerInfoRecord {
-    const info = maybeInfo as DockerInfoRecord;
+export function isDockerInfoRecord(
+	maybeInfo: unknown,
+): maybeInfo is DockerInfoRecord {
+	const info = maybeInfo as DockerInfoRecord;
 
-    if (typeof info.OSType === 'string' && !isContainerOS(info.OSType)) {
-        return false;
-    }
+	if (typeof info.OSType === "string" && !isContainerOS(info.OSType)) {
+		return false;
+	}
 
-    return true;
+	return true;
 }

@@ -5,4 +5,4 @@
 
 import { withArg } from "../../utils/commandLineBuilder";
 
-export const withDockerNoTruncArg = withArg('--no-trunc');
+export const withDockerNoTruncArg = withArg("--no-trunc");

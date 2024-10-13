@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 export interface RegistryWizardContext {
-    readonly usernamePrompt?: string;
+	readonly usernamePrompt?: string;
 
-    readonly secretPrompt?: string;
+	readonly secretPrompt?: string;
 
-    username?: string;
+	username?: string;
 
-    secret?: string;
+	secret?: string;
 }

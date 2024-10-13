@@ -3,12 +3,19 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 
-import * as vscode from 'vscode';
-import { LoginInformation } from './BasicCredentials';
+import * as vscode from "vscode";
 
-export interface AuthenticationProvider<TOptions extends vscode.AuthenticationGetSessionOptions = vscode.AuthenticationGetSessionOptions> {
-    getSession(scopes: string[], options?: TOptions): Promise<vscode.AuthenticationSession & { type: string }>;
-    removeSession?(sessionId?: string): Promise<void>;
+import { LoginInformation } from "./BasicCredentials";
 
-    getLoginInformation?(): Promise<LoginInformation>;
+export interface AuthenticationProvider<
+	TOptions extends
+		vscode.AuthenticationGetSessionOptions = vscode.AuthenticationGetSessionOptions,
+> {
+	getSession(
+		scopes: string[],
+		options?: TOptions,
+	): Promise<vscode.AuthenticationSession & { type: string }>;
+	removeSession?(sessionId?: string): Promise<void>;
+
+	getLoginInformation?(): Promise<LoginInformation>;
 }

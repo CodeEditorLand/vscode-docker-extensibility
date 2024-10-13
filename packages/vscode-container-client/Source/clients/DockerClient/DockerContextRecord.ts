@@ -4,26 +4,28 @@
  *--------------------------------------------------------------------------------------------*/
 
 export type DockerContextRecord = {
-    Name: string;
-    Current: boolean;
-    Description?: string;
-    DockerEndpoint?: string;
+	Name: string;
+	Current: boolean;
+	Description?: string;
+	DockerEndpoint?: string;
 };
 
-export function isDockerContextRecord(maybeContext: unknown): maybeContext is DockerContextRecord {
-    const context = maybeContext as DockerContextRecord;
+export function isDockerContextRecord(
+	maybeContext: unknown,
+): maybeContext is DockerContextRecord {
+	const context = maybeContext as DockerContextRecord;
 
-    if (!context || typeof context !== 'object') {
-        return false;
-    }
+	if (!context || typeof context !== "object") {
+		return false;
+	}
 
-    if (typeof context.Name !== 'string') {
-        return false;
-    }
+	if (typeof context.Name !== "string") {
+		return false;
+	}
 
-    if (typeof context.Current !== 'boolean') {
-        return false;
-    }
+	if (typeof context.Current !== "boolean") {
+		return false;
+	}
 
-    return true;
+	return true;
 }
