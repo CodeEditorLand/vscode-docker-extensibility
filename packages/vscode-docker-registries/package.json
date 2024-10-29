@@ -4,7 +4,7 @@
 	},
 	"description": "Extensibility model for contributing registry providers to the Docker extension for Visual Studio Code",
 	"devDependencies": {
-		"@types/chai": "5.0.0",
+		"@types/chai": "5.0.1",
 		"@types/chai-as-promised": "8.0.1",
 		"@types/node": "22.x",
 		"chai": "5.1.2",
