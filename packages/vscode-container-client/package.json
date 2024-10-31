@@ -6,7 +6,7 @@
 	"description": "Extensibility model for implementing container runtime providers (shared by VS and VS Code)",
 	"devDependencies": {
 		"@types/chai": "5.0.1",
-		"@types/node": "22.8.4",
+		"@types/node": "22.8.6",
 		"chai": "5.1.2",
 		"tsconfig-paths": "4.2.0"
 	},
