@@ -27,15 +27,19 @@ export function tryParseSize(
 
 			if (result?.groups?.size) {
 				const size: number = Number.parseFloat(result.groups.size);
+
 				const unit: string | undefined = result.groups.sizeUnit;
 
 				switch (unit?.toLowerCase()) {
 					case "kb":
 						return Math.round(size * 1024);
+
 					case "mb":
 						return Math.round(size * 1024 * 1024);
+
 					case "gb":
 						return Math.round(size * 1024 * 1024 * 1024);
+
 					default:
 						return Math.round(size);
 				}

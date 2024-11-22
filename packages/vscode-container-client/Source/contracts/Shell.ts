@@ -13,5 +13,6 @@ export interface IShell {
 		arg: string,
 		quoting: ShellQuoting,
 	): ShellQuotedString;
+
 	getShellOrDefault(shell?: string | boolean): string | boolean | undefined;
 }

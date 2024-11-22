@@ -23,15 +23,20 @@ export type CpuArchitecture =
  */
 export function getNativeArchitecture(): CpuArchitecture {
 	const arch = os.arch() || "amd64";
+
 	switch (arch) {
 		case "ia32":
 			return "386";
+
 		case "mipsel":
 			return "mipsle";
+
 		case "ppc":
 			return "ppc64";
+
 		case "x64":
 			return "amd64";
+
 		default:
 			return arch;
 	}

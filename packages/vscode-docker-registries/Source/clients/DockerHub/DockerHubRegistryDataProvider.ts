@@ -97,6 +97,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 		]);
 
 		await wizard.prompt();
+
 		const credentials: BasicCredentials = {
 			username: wizardContext.username || "",
 			secret: wizardContext.secret || "",
@@ -119,6 +120,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 				DockerHubContextValue,
 			];
 		});
+
 		return children;
 	}
 
@@ -164,6 +166,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 		registry: CommonRegistry,
 	): Promise<CommonRepository[]> {
 		const results: CommonRepository[] = [];
+
 		let requestUrl: vscode.Uri | undefined = DockerHubRequestUrl.with({
 			path: `v2/repositories/${registry.label}`,
 		}).with({ query: pageSizeQuery });
@@ -198,6 +201,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 
 	public async getTags(repository: CommonRepository): Promise<CommonTag[]> {
 		const results: CommonTag[] = [];
+
 		let requestUrl: vscode.Uri | undefined = DockerHubRequestUrl.with({
 			path: `v2/repositories/${repository.parent.label}/${repository.label}/tags`,
 		}).with({ query: pageSizeQuery });
@@ -240,6 +244,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 
 	private async getNamespaces(): Promise<string[]> {
 		const results: string[] = [];
+
 		let requestUrl: vscode.Uri | undefined = DockerHubRequestUrl.with({
 			path: `v2/repositories/namespaces`,
 		}).with({ query: pageSizeQuery });
@@ -266,6 +271,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 
 	private async getOrganizations(): Promise<string[]> {
 		const results: string[] = [];
+
 		let requestUrl: vscode.Uri | undefined = DockerHubRequestUrl.with({
 			path: `v2/user/orgs`,
 		}).with({ query: pageSizeQuery });

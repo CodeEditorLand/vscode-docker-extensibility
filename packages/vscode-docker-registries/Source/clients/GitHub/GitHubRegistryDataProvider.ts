@@ -28,6 +28,7 @@ import {
 import { registryV2Request } from "../RegistryV2/registryV2Request";
 
 const GitHubContainerRegistryUri = vscode.Uri.parse("https://ghcr.io");
+
 const GitHubContextValue = "github";
 
 export function isGitHubRegistry(item: unknown): item is V2Registry {
@@ -72,6 +73,7 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 		]);
 
 		await wizard.prompt();
+
 		const credentials: BasicCredentials = {
 			username: wizardContext.username || "",
 			secret: wizardContext.secret || "",
@@ -94,6 +96,7 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 				GitHubContextValue,
 			];
 		});
+
 		return children;
 	}
 
@@ -115,10 +118,13 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 		registry: V2Registry,
 	): Promise<V2Repository[]> {
 		const originalSearchString = registry.label + "/";
+
 		const requestUrl = registry.baseUrl.with({ path: "v2/_catalog" });
 
 		const results: V2Repository[] = [];
+
 		let nextSearchString = originalSearchString;
+
 		let foundAllInSearch = false;
 
 		do {
@@ -139,6 +145,7 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 			for (const repository of catalogResponse.body?.repositories || []) {
 				if (!repository.startsWith(originalSearchString)) {
 					foundAllInSearch = true;
+
 					break;
 				} else {
 					nextSearchString = repository;
@@ -166,6 +173,7 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 		item: V2Tag,
 	): Promise<Date | undefined> {
 		const repository = item.parent as V2Repository;
+
 		const tagRequestUrl = repository.baseUrl.with({
 			path: `v2/${repository.label}/manifests/${item.label}`,
 		});
@@ -178,9 +186,11 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 		});
 
 		const digest = tagDetailResponse.body?.config?.digest || "";
+
 		const digestRequestUrl = repository.baseUrl.with({
 			path: `v2/${repository.label}/blobs/${digest}`,
 		});
+
 		if (digest) {
 			const configFile = await registryV2Request<{ created: string }>({
 				authenticationProvider:
@@ -205,6 +215,7 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 		results.push(creds.username);
 
 		const requestUrl = vscode.Uri.parse("https://api.github.com/user/orgs");
+
 		const response = await httpRequest<{ login: string }[]>(
 			requestUrl.toString(),
 			{

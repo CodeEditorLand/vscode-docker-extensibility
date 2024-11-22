@@ -52,6 +52,7 @@ export function normalizeDockerListImageRecord(
 	image: DockerListImageRecord,
 ): ListImagesItem {
 	const createdAt = dayjs.utc(image.CreatedAt).toDate();
+
 	const size = tryParseSize(image.Size);
 
 	const repositoryAndTag = `${image.Repository}${image.Tag ? `:${image.Tag}` : ""}`;

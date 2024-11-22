@@ -13,6 +13,7 @@ export function withDockerPortsArg(ports?: Array<PortBinding>) {
 			let binding = port.hostIp ? `${port.hostIp}:` : "";
 			binding += `${port.hostPort || ""}:`;
 			binding += port.containerPort;
+
 			if (port.protocol) {
 				binding += `/${port.protocol}`;
 			}

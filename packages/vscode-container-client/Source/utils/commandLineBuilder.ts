@@ -115,6 +115,7 @@ export function withNamedArg(
 		return toArray(args).reduce((allArgs, arg) => {
 			if (arg) {
 				const normalizedArg = shouldQuote ? quoted(arg) : escaped(arg);
+
 				if (assignValue) {
 					return withArg(`${name}=${normalizedArg?.value}`)(allArgs);
 				}

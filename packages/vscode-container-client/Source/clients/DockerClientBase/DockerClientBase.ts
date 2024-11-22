@@ -154,6 +154,7 @@ import { withDockerPlatformArg } from "./withDockerPlatformArg";
 import { withDockerPortsArg } from "./withDockerPortsArg";
 
 const LinuxStatArguments = "%f %h %g %u %s %X %Y %Z %n";
+
 const WindowsStatArguments = "/A-S /-C /TW";
 
 export abstract class DockerClientBase
@@ -225,6 +226,7 @@ export abstract class DockerClientBase
 		strict: boolean,
 	): Promise<VersionItem> {
 		const version = JSON.parse(output);
+
 		if (!isDockerVersionRecord(version)) {
 			throw new Error("Invalid version JSON");
 		}
@@ -321,6 +323,7 @@ export abstract class DockerClientBase
 			try {
 				// Parse a line at a time
 				const item: DockerEventRecord = JSON.parse(line);
+
 				if (!isDockerEventRecord(item)) {
 					throw new Error("Invalid event JSON");
 				}
@@ -479,6 +482,7 @@ export abstract class DockerClientBase
 		strict: boolean,
 	): Promise<Array<ListImagesItem>> {
 		const images = new Array<ListImagesItem>();
+
 		try {
 			// Docker returns JSON per-line output, so we need to split each line
 			// and parse as independent JSON objects
@@ -905,6 +909,7 @@ export abstract class DockerClientBase
 		strict: boolean,
 	): Promise<Array<ListContainersItem>> {
 		const containers = new Array<ListContainersItem>();
+
 		try {
 			output.split("\n").forEach((containerJson) => {
 				try {
@@ -1345,6 +1350,7 @@ export abstract class DockerClientBase
 		strict: boolean,
 	): Promise<ListVolumeItem[]> {
 		const volumes = new Array<ListVolumeItem>();
+
 		try {
 			output.split("\n").forEach((volumeJson) => {
 				try {
@@ -1604,6 +1610,7 @@ export abstract class DockerClientBase
 		strict: boolean,
 	): Promise<Array<ListNetworkItem>> {
 		const networks = new Array<ListNetworkItem>();
+
 		try {
 			output.split("\n").forEach((networkJson) => {
 				try {
@@ -1693,6 +1700,7 @@ export abstract class DockerClientBase
 		strict: boolean,
 	): Promise<PruneNetworksItem> {
 		let networks: string[] = [];
+
 		const deletedNetworkStartString = "Deleted Networks:";
 
 		if (output.includes(deletedNetworkStartString)) {
@@ -1847,6 +1855,7 @@ export abstract class DockerClientBase
 		options: ListFilesCommandOptions,
 	): CommandLineArgs {
 		let command: (string | ShellQuotedString)[];
+
 		if (options.operatingSystem === "windows") {
 			command = [
 				"cmd",
@@ -1912,6 +1921,7 @@ export abstract class DockerClientBase
 		options: StatPathCommandOptions,
 	): CommandLineArgs {
 		let command: (string | ShellQuotedString)[];
+
 		if (options.operatingSystem === "windows") {
 			command = [
 				"cmd",

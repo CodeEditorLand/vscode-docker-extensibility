@@ -25,7 +25,9 @@ import {
 } from "./GenericRegistryV2WizardPromptStep";
 
 const GenericV2StorageKey = "GenericV2ContainerRegistry";
+
 const TrackedRegistriesKey = `${GenericV2StorageKey}.TrackedRegistries`;
+
 const GenericV2ContextValue = "generic";
 
 export function isGenericV2Registry(item: unknown): item is V2Registry {
@@ -67,6 +69,7 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 				GenericV2ContextValue,
 			];
 		});
+
 		return children;
 	}
 
@@ -85,6 +88,7 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 		const trackedRegistryStrings = this.extensionContext.globalState.get<
 			string[]
 		>(TrackedRegistriesKey, []);
+
 		const trackedRegistries = trackedRegistryStrings.map((r) =>
 			vscode.Uri.parse(r),
 		);
@@ -172,12 +176,15 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 	public async removeTrackedRegistry(registry: V2Registry): Promise<void> {
 		// remove registry url from list of tracked registries
 		const registryUriString = registry.baseUrl.toString().toLowerCase();
+
 		const trackedRegistryStrings = this.extensionContext.globalState.get<
 			string[]
 		>(TrackedRegistriesKey, []);
+
 		const index = trackedRegistryStrings.findIndex(
 			(r) => r === registryUriString,
 		);
+
 		if (index !== -1) {
 			trackedRegistryStrings.splice(index, 1);
 			void this.extensionContext.globalState.update(
@@ -197,6 +204,7 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 		const trackedRegistryStrings = this.extensionContext.globalState.get<
 			string[]
 		>(TrackedRegistriesKey, []);
+
 		return trackedRegistryStrings.length > 0;
 	}
 }

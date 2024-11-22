@@ -149,6 +149,7 @@ export function normalizeDockerInspectImageRecord(
 		image.Config?.ExposedPorts || {},
 	).map<PortBinding>(([rawPort]) => {
 		const [port, protocol] = rawPort.split("/");
+
 		return {
 			containerPort: parseInt(port),
 			protocol:

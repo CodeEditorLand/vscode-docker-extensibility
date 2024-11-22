@@ -51,6 +51,7 @@ export class AccumulatorStream extends stream.Writable {
 	 */
 	public async getBytes(): Promise<Buffer> {
 		await this.streamEndPromise;
+
 		return Buffer.concat(this.chunks);
 	}
 

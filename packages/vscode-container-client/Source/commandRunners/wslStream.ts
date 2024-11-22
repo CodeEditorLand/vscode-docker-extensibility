@@ -35,6 +35,7 @@ export class WslShellCommandRunnerFactory
 		args: CommandLineArgs;
 	} {
 		const command = this.options.wslPath ?? "wsl.exe";
+
 		const args = composeArgs(
 			withNamedArg("-d", this.options.distro),
 			withArg("--"),

@@ -15,6 +15,7 @@ export function parseDockerRawPortString(
 ): PortBinding | undefined {
 	const portRegex =
 		/((?<hostIp>[\da-f.:[\]]+)(:(?<hostPort>\d+)))?(\s*->\s*)?((?<containerPort>\d+)\/(?<protocol>tcp|udp))/i;
+
 	const result = portRegex.exec(portString);
 
 	if (!result || !result.groups) {
@@ -22,12 +23,15 @@ export function parseDockerRawPortString(
 	}
 
 	const hostIp = result.groups["hostIp"] || undefined;
+
 	const hostPort = result.groups["hostPort"]
 		? Number.parseInt(result.groups["hostPort"])
 		: undefined;
+
 	const containerPort = result.groups["containerPort"]
 		? Number.parseInt(result.groups["containerPort"])
 		: undefined;
+
 	const protocol = result.groups["protocol"] || undefined;
 
 	if (

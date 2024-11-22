@@ -118,6 +118,7 @@ export function normalizeDockerInspectContainerRecord(
 		container.NetworkSettings?.Ports || {},
 	).map<PortBinding>(([rawPort, hostBinding]) => {
 		const [port, protocol] = rawPort.split("/");
+
 		return {
 			hostIp: hostBinding?.[0]?.HostIp,
 			hostPort: hostBinding?.[0]?.HostPort,
@@ -147,6 +148,7 @@ export function normalizeDockerInspectContainerRecord(
 						readOnly: !mount.RW,
 					},
 				];
+
 			case "volume":
 				return [
 					...curMounts,
@@ -161,12 +163,15 @@ export function normalizeDockerInspectContainerRecord(
 				];
 		}
 	}, new Array<InspectContainersItemMount>());
+
 	const labels = container.Config?.Labels ?? {};
 
 	const createdAt = dayjs.utc(container.Created);
+
 	const startedAt = container.State?.StartedAt
 		? dayjs.utc(container.State?.StartedAt)
 		: undefined;
+
 	const finishedAt = container.State?.FinishedAt
 		? dayjs.utc(container.State?.FinishedAt)
 		: undefined;

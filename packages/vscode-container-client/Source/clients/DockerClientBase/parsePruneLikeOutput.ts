@@ -7,6 +7,7 @@ import { tryParseSize } from "./tryParseSize";
 
 // default regex to parse the space reclaimed
 const PruneSpaceReclaimedRegex = /^Total reclaimed space:\s+([\w\s.]+)$/gim;
+
 const ResourceRegex = /^(\w+)$/gim;
 
 export type PruneParseOptions = {
@@ -26,17 +27,21 @@ export function parsePruneLikeOutput(
 	const resourceRegex = options?.resourceRegex || ResourceRegex;
 
 	const deletedResources: string[] = [];
+
 	let spaceReclaimed: number = 0;
 
 	// match resources
 	resourceRegex.lastIndex = 0;
+
 	let result: RegExpExecArray | null;
+
 	while ((result = resourceRegex.exec(output)) && result.length >= 2) {
 		deletedResources.push(result[1]);
 	}
 
 	// match space reclaimed
 	PruneSpaceReclaimedRegex.lastIndex = 0;
+
 	const spaceMatched = PruneSpaceReclaimedRegex.exec(output)?.[0];
 	spaceReclaimed = tryParseSize(spaceMatched) || 0;
 

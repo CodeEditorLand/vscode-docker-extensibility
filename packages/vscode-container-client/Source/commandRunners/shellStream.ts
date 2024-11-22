@@ -47,6 +47,7 @@ export class ShellStreamCommandRunnerFactory<
 		) => {
 			const commandResponse =
 				await normalizeCommandResponseLike(commandResponseLike);
+
 			const { command, args } = this.getCommandAndArgs(commandResponse);
 
 			throwIfCancellationRequested(this.options.cancellationToken);
@@ -62,6 +63,7 @@ export class ShellStreamCommandRunnerFactory<
 
 				// Determine the appropriate combination of streams that need to read from stdout
 				let stdOutPipe: NodeJS.WritableStream | undefined = accumulator;
+
 				if (accumulator && this.options.stdOutPipe) {
 					const stdOutPassThrough = new stream.PassThrough();
 					stdOutPassThrough.pipe(this.options.stdOutPipe);
@@ -81,6 +83,7 @@ export class ShellStreamCommandRunnerFactory<
 
 				if (accumulator && commandResponse.parse) {
 					const output = await accumulator.getString();
+
 					throwIfCancellationRequested(
 						this.options.cancellationToken,
 					);
@@ -109,11 +112,13 @@ export class ShellStreamCommandRunnerFactory<
 	): AsyncGenerator<T> {
 		const commandResponse =
 			await normalizeCommandResponseLike(commandResponseLike);
+
 		const { command, args } = this.getCommandAndArgs(commandResponse);
 
 		throwIfCancellationRequested(this.options.cancellationToken);
 
 		const dataStream: stream.PassThrough = new stream.PassThrough();
+
 		const innerGenerator = commandResponse.parseStream(
 			dataStream,
 			!!this.options.strict,

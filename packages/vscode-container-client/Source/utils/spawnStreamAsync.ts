@@ -77,8 +77,10 @@ export class Powershell extends Shell {
 			switch (quotedArg.quoting) {
 				case ShellQuoting.Escape:
 					return quotedArg.value.replace(/[ "'()]/g, escape);
+
 				case ShellQuoting.Weak:
 					return `"${quotedArg.value.replace(/["]/g, escape)}"`;
+
 				case ShellQuoting.Strong:
 					return `'${quotedArg.value.replace(/[']/g, escape)}'`;
 			}
@@ -92,6 +94,7 @@ export class Powershell extends Shell {
 		switch (quoting) {
 			case ShellQuoting.Escape:
 				return { value: arg, quoting };
+
 			case ShellQuoting.Weak:
 			case ShellQuoting.Strong:
 				return {
@@ -130,8 +133,10 @@ export class Bash extends Shell {
 			switch (quotedArg.quoting) {
 				case ShellQuoting.Escape:
 					return quotedArg.value.replace(/[ "']/g, escape);
+
 				case ShellQuoting.Weak:
 					return `"${quotedArg.value.replace(/["]/g, escape)}"`;
+
 				case ShellQuoting.Strong:
 					return `'${quotedArg.value.replace(/[']/g, escape)}'`;
 			}
@@ -145,6 +150,7 @@ export class Bash extends Shell {
 export class Cmd extends Shell {
 	public quote(args: CommandLineArgs): Array<string> {
 		const escapeQuote = (value: string) => `\\${value}`;
+
 		const escape = (value: string) => `^${value}`;
 
 		return args.map((quotedArg) => {
@@ -158,8 +164,10 @@ export class Cmd extends Shell {
 			switch (quotedArg.quoting) {
 				case ShellQuoting.Escape:
 					return quotedArg.value.replace(/[ "^&\\<>|]/g, escape);
+
 				case ShellQuoting.Weak:
 					return quotedArg.value.replace(/[ "^&\\<>|]/g, escape);
+
 				case ShellQuoting.Strong:
 					return `"${quotedArg.value.replace(/["]/g, escapeQuote)}"`;
 			}
@@ -200,6 +208,7 @@ export class NoShell extends Shell {
 					case ShellQuoting.Weak:
 					case ShellQuoting.Strong:
 						return `"${quotedArg.value.replace(/["]/g, windowsEscape)}"`;
+
 					default:
 						return quotedArg.value;
 				}
@@ -300,6 +309,7 @@ export async function spawnStreamAsync(
 		// Complete the promise when the process exits
 		childProcess.on("exit", (code, signal) => {
 			disposable.dispose();
+
 			if (code === 0) {
 				resolve();
 			} else if (signal) {

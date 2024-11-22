@@ -12,20 +12,24 @@ export function getNextLinkFromHeaders(
 	baseUrl: vscode.Uri,
 ): vscode.Uri | undefined {
 	const linkHeader = headers.get("link");
+
 	if (!linkHeader) {
 		return undefined;
 	}
 
 	const match = linkHeader.match(/<(.*)>; rel="next"/i);
+
 	if (!match) {
 		return undefined;
 	}
 
 	const headerUri = vscode.Uri.parse(match[1]);
+
 	const nextLinkUri = baseUrl.with({
 		path: headerUri.path,
 		query: headerUri.query,
 	});
+
 	return nextLinkUri;
 }
 
@@ -49,6 +53,7 @@ export async function httpRequest<T>(
 	throwOnFailure: boolean = true,
 ): Promise<ResponseLike<T>> {
 	const fetchRequest = new Request(url, request);
+
 	const response: Response = await fetch(fetchRequest);
 
 	if (throwOnFailure && response.status === 401) {

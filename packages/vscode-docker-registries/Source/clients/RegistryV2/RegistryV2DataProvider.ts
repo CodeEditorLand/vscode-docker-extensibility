@@ -42,9 +42,11 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 		registry: V2Registry,
 	): Promise<V2Repository[]> {
 		const results: V2Repository[] = [];
+
 		let nextLink: vscode.Uri | undefined = registry.baseUrl.with({
 			path: "v2/_catalog",
 		});
+
 		do {
 			const catalogResponse = await registryV2Request<{
 				repositories: string[];
@@ -77,6 +79,7 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 
 	public async getTags(repository: V2Repository): Promise<V2Tag[]> {
 		const results: V2Tag[] = [];
+
 		let nextLink: vscode.Uri | undefined = repository.baseUrl.with({
 			path: `v2/${repository.label}/tags/list`,
 		});
@@ -127,6 +130,7 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 		item: V2RegistryItem,
 	): Promise<LoginInformation> {
 		const authenticationProvider = this.getAuthenticationProvider(item);
+
 		if (authenticationProvider.getLoginInformation) {
 			return authenticationProvider.getLoginInformation();
 		}
@@ -141,7 +145,9 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 
 	public async deleteTag(item: CommonTag): Promise<void> {
 		const digest = await this.getImageDigest(item);
+
 		const registry = item.parent.parent as unknown as V2Registry;
+
 		const requestUrl = registry.baseUrl.with({
 			path: `v2/${item.parent.label}/manifests/${digest}`,
 		});
@@ -157,6 +163,7 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 		const response = await this.getManifestV2(item);
 
 		const digest = response.headers.get("docker-content-digest");
+
 		if (!digest) {
 			throw new Error("Could not find digest");
 		}
@@ -166,6 +173,7 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 
 	public async getManifestV1(item: V2Tag): Promise<Manifest> {
 		const repository = item.parent as V2Repository;
+
 		const requestUrl = repository.baseUrl.with({
 			path: `v2/${repository.label}/manifests/${item.label}`,
 		});
@@ -204,6 +212,7 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 		item: V2Tag,
 	): Promise<RegistryV2Response<unknown>> {
 		const repository = item.parent as V2Repository;
+
 		const requestUrl = repository.baseUrl.with({
 			path: `v2/${item.parent.label}/manifests/${item.label}`,
 		});
@@ -224,6 +233,7 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 		const manifestv1 = await this.getManifestV1(item);
 
 		const history = manifestv1.history?.[0];
+
 		return history?.v1Compatibility?.created
 			? new Date(history.v1Compatibility.created)
 			: undefined;

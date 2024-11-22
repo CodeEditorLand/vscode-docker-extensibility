@@ -79,6 +79,7 @@ export function normalizeDockerListContainerRecord(
 		.filter((port) => !!port)
 		.reduce<Array<PortBinding>>((portBindings, rawPort) => {
 			const parsedPort = parseDockerRawPortString(rawPort);
+
 			if (parsedPort) {
 				return portBindings.concat(parsedPort);
 			} else if (strict) {
@@ -91,6 +92,7 @@ export function normalizeDockerListContainerRecord(
 	const networks = container.Networks.split(",");
 
 	const name = container.Names.split(",")[0].trim();
+
 	const createdAt = dayjs.utc(container.CreatedAt).toDate();
 
 	return {

@@ -13,8 +13,10 @@ export function parseDockerLikeEnvironmentVariables(
 ): Record<string, string> {
 	return environmentVariables.reduce<Record<string, string>>((evs, ev) => {
 		const index = ev.indexOf("=");
+
 		if (index > -1) {
 			const name = ev.slice(0, index);
+
 			const value = ev.slice(index + 1);
 
 			return {

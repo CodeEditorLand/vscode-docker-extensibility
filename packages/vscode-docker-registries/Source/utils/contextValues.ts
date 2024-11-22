@@ -17,6 +17,8 @@ export function getContextValue(
 		: [];
 
 	const allContextValues = [...additional, ...providedContextValues];
+
 	const contextValueSet = new Set(allContextValues);
+
 	return Array.from(contextValueSet).sort().join(";");
 }

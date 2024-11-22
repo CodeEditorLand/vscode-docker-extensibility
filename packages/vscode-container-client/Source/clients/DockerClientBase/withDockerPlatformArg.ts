@@ -15,6 +15,7 @@ export function formatDockerPlatform(
 		return undefined;
 	}
 	const os = normalizeContainerOS(platform?.os);
+
 	const architecture = platform?.architecture || getNativeArchitecture();
 
 	return `${os}/${architecture}`;

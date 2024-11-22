@@ -22,6 +22,7 @@ export abstract class BasicAuthProvider implements AuthenticationProvider {
 		const username = this.storageMemento.get<string>(
 			`BasicAuthProvider.${this.storageSubKey}.username`,
 		);
+
 		const secret = await this.secretStorage.get(
 			`BasicAuthProvider.${this.storageSubKey}.secret`,
 		);

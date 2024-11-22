@@ -13,10 +13,12 @@ export function normalizeContainerOS(os?: string): string {
 	switch (os) {
 		case "win":
 			return "windows";
+
 		case "osx":
 		case "mac":
 		case "macos":
 			return "darwin";
+
 		default:
 			return os;
 	}

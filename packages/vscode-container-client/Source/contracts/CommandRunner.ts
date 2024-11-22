@@ -65,6 +65,7 @@ export type StreamingCommandRunner = <T>(
  */
 export interface ICommandRunnerFactory {
 	getCommandRunner(): CommandRunner;
+
 	getStreamingCommandRunner(): StreamingCommandRunner;
 }
 

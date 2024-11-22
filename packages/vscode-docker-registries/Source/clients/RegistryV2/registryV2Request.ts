@@ -16,6 +16,7 @@ export interface RegistryV2RequestOptions {
 	query?: Record<string, string>;
 	scopes: string[];
 	headers?: Record<string, string>;
+
 	throwOnFailure?: boolean;
 	authenticationProvider: AuthenticationProvider<vscode.AuthenticationGetSessionOptions>;
 	sessionOptions?: vscode.AuthenticationGetSessionOptions;
@@ -41,6 +42,7 @@ export async function registryV2Request<T>(
 			...options,
 			throwOnFailure: false,
 		});
+
 		if (result.succeeded) {
 			return result;
 		} else if (
@@ -66,6 +68,7 @@ async function registryV2RequestInternal<T>(
 	options: RegistryV2RequestOptions,
 ): Promise<RegistryV2Response<T>> {
 	const query = new URLSearchParams(options.query);
+
 	const uri = options.requestUri.with({ query: query.toString() });
 
 	const auth = await options.authenticationProvider.getSession(

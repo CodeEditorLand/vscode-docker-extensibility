@@ -30,6 +30,7 @@ export class GenericRegistryV2WizardPromptStep<
 				this.validateUrl(value, wizardContext),
 			placeholder: wizardContext.registryPromptPlaceholder ?? "",
 		};
+
 		const url = await showInputBox(options);
 		wizardContext.registryUri = Uri.parse(url);
 	}
@@ -44,6 +45,7 @@ export class GenericRegistryV2WizardPromptStep<
 		}
 
 		let authority: string | undefined;
+
 		let scheme: string | undefined;
 
 		try {

@@ -69,6 +69,7 @@ export class DockerClient
 		strict: boolean,
 	): Promise<ListContextItem[]> {
 		const contexts = new Array<ListContextItem>();
+
 		try {
 			// Docker returns JSON per-line output, so we need to split each line
 			// and parse as independent JSON objects

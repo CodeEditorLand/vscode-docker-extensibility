@@ -30,6 +30,7 @@ export const dayjs = new Proxy(dayjsinner, {
 	},
 	get(target, prop, receiver) {
 		const value = Reflect.get(target, prop, receiver);
+
 		if (typeof value === "function") {
 			if (prop === "utc") {
 				return function (

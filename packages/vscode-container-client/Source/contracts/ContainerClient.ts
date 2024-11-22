@@ -20,8 +20,10 @@ export function isContainerOS(
 	switch (maybeContainerOS) {
 		case "linux":
 			return true;
+
 		case "windows":
 			return true;
+
 		default:
 			return false;
 	}

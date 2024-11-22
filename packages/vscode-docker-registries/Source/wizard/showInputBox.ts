@@ -11,6 +11,7 @@ export async function showInputBox(
 	options: RegistryWizardPromptStepOptions,
 ): Promise<string> {
 	const disposables: Disposable[] = [];
+
 	try {
 		return await new Promise((resolve, reject) => {
 			const inputBox = window.createInputBox();
@@ -30,6 +31,7 @@ export async function showInputBox(
 				const asyncValidationResult = options.validateInput
 					? await options.validateInput(inputBox.value)
 					: undefined;
+
 				if (!asyncValidationResult) {
 					resolve(inputBox.value);
 				} else {
