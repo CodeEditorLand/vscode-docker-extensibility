@@ -19,9 +19,13 @@ import {
 import { registryV2Request, RegistryV2Response } from "./registryV2Request";
 
 export type V2RegistryItem = CommonRegistryItem;
+
 export type V2RegistryRoot = CommonRegistryRoot;
+
 export type V2Registry = CommonRegistry & V2RegistryItem;
+
 export type V2Repository = CommonRepository & V2RegistryItem;
+
 export type V2Tag = CommonTag & V2RegistryItem;
 
 export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider {

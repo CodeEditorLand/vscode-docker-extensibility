@@ -28,6 +28,7 @@ export function range(
 	stop: number,
 	step: number,
 ): Generator<number, void, unknown>;
+
 export function* range(
 	start: number,
 	stop?: number,
