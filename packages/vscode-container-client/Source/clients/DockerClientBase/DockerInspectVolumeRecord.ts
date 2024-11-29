@@ -8,11 +8,17 @@ import { dayjs } from "../../utils/dayjs";
 
 export type DockerInspectVolumeRecord = {
 	Name: string;
+
 	Driver: string;
+
 	Mountpoint: string;
+
 	Scope: string;
+
 	Labels: Record<string, string>;
+
 	Options: Record<string, unknown>;
+
 	CreatedAt: string;
 };
 

@@ -92,6 +92,7 @@ export function withFlagArg(
 
 type WithNamedArgOptions = {
 	assignValue?: boolean;
+
 	shouldQuote?: boolean;
 };
 /**

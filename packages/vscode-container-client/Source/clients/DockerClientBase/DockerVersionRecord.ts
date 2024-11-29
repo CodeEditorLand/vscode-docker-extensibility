@@ -5,6 +5,7 @@
 
 export type DockerVersionRecord = {
 	Client: { ApiVersion: string };
+
 	Server: { ApiVersion: string };
 };
 

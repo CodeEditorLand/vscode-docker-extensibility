@@ -20,6 +20,7 @@ import {
 
 export type WslShellCommandRunnerOptions = ShellStreamCommandRunnerOptions & {
 	wslPath?: string;
+
 	distro?: string | null;
 };
 
@@ -32,6 +33,7 @@ export class WslShellCommandRunnerFactory
 {
 	protected getCommandAndArgs(commandResponse: CommandResponseBase): {
 		command: string;
+
 		args: CommandLineArgs;
 	} {
 		const command = this.options.wslPath ?? "wsl.exe";

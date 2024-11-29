@@ -10,9 +10,13 @@ import { tryParseSize } from "./tryParseSize";
 
 export type DockerListImageRecord = {
 	ID: string;
+
 	Repository: string;
+
 	Tag: string;
+
 	CreatedAt: string;
+
 	Size: string | number;
 };
 

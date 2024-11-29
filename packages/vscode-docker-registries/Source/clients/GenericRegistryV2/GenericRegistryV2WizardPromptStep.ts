@@ -14,8 +14,11 @@ import { showInputBox } from "../../wizard/showInputBox";
 
 export interface GenericRegistryV2WizardContext extends RegistryWizardContext {
 	readonly registryPrompt: string;
+
 	readonly connectedRegistries: string[];
+
 	registryPromptPlaceholder?: string;
+
 	registryUri?: Uri;
 }
 
@@ -32,6 +35,7 @@ export class GenericRegistryV2WizardPromptStep<
 		};
 
 		const url = await showInputBox(options);
+
 		wizardContext.registryUri = Uri.parse(url);
 	}
 
@@ -50,7 +54,9 @@ export class GenericRegistryV2WizardPromptStep<
 
 		try {
 			const uri = Uri.parse(value);
+
 			scheme = uri.scheme;
+
 			authority = uri.authority;
 
 			if (

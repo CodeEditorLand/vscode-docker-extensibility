@@ -227,11 +227,15 @@ export class NoShell extends Shell {
 
 export type StreamSpawnOptions = SpawnOptions & {
 	onCommand?: (command: string) => void;
+
 	cancellationToken?: CancellationTokenLike;
+
 	shellProvider?: Shell;
 
 	stdInPipe?: NodeJS.ReadableStream;
+
 	stdOutPipe?: NodeJS.WritableStream;
+
 	stdErrPipe?: NodeJS.WritableStream;
 };
 
@@ -287,8 +291,11 @@ export async function spawnStreamAsync(
 	return new Promise<void>((resolve, reject) => {
 		const disposable = cancellationToken.onCancellationRequested(() => {
 			disposable.dispose();
+
 			options.stdOutPipe?.end();
+
 			options.stdErrPipe?.end();
+
 			childProcess.removeAllListeners();
 
 			if (childProcess.pid) {
@@ -303,6 +310,7 @@ export async function spawnStreamAsync(
 		// Reject the promise on an error event
 		childProcess.on("error", (err) => {
 			disposable.dispose();
+
 			reject(err);
 		});
 

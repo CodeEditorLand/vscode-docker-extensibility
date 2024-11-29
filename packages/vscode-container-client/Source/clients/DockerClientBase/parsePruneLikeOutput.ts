@@ -17,6 +17,7 @@ export type PruneParseOptions = {
 
 export type PruneResult = {
 	spaceReclaimed: number;
+
 	resources: string[];
 };
 
@@ -43,6 +44,7 @@ export function parsePruneLikeOutput(
 	PruneSpaceReclaimedRegex.lastIndex = 0;
 
 	const spaceMatched = PruneSpaceReclaimedRegex.exec(output)?.[0];
+
 	spaceReclaimed = tryParseSize(spaceMatched) || 0;
 
 	return {

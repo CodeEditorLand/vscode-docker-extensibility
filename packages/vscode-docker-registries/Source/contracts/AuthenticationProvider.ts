@@ -15,6 +15,7 @@ export interface AuthenticationProvider<
 		scopes: string[],
 		options?: TOptions,
 	): Promise<vscode.AuthenticationSession & { type: string }>;
+
 	removeSession?(sessionId?: string): Promise<void>;
 
 	getLoginInformation?(): Promise<LoginInformation>;

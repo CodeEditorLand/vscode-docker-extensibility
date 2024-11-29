@@ -32,6 +32,7 @@ export abstract class CommonRegistryDataProvider
 	protected readonly onDidChangeTreeDataEmitter = new vscode.EventEmitter<
 		CommonRegistryItem | undefined
 	>();
+
 	public readonly onDidChangeTreeData = this.onDidChangeTreeDataEmitter.event;
 
 	public dispose(): void {
@@ -108,8 +109,11 @@ export abstract class CommonRegistryDataProvider
 	}
 
 	public abstract readonly id: string;
+
 	public abstract readonly label: string;
+
 	public abstract readonly description?: string;
+
 	public abstract readonly iconPath?:
 		| string
 		| vscode.Uri
@@ -117,12 +121,15 @@ export abstract class CommonRegistryDataProvider
 		| vscode.ThemeIcon;
 
 	public abstract getRoot(): Promise<CommonRegistryRoot> | CommonRegistryRoot;
+
 	public abstract getRegistries(
 		root: CommonRegistryRoot | CommonRegistryItem,
 	): Promise<CommonRegistry[]> | CommonRegistry[];
+
 	public abstract getRepositories(
 		registry: CommonRegistry,
 	): Promise<CommonRepository[]> | CommonRepository[];
+
 	public abstract getTags(
 		repository: CommonRepository,
 	): Promise<CommonTag[]> | CommonTag[];
@@ -132,6 +139,8 @@ export abstract class CommonRegistryDataProvider
 	): Promise<LoginInformation> | LoginInformation;
 
 	public deleteRegistry?(item: CommonRegistry): Promise<void>;
+
 	public deleteRepository?(item: CommonRepository): Promise<void>;
+
 	public deleteTag?(item: CommonTag): Promise<void>;
 }

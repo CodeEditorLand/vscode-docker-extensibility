@@ -58,18 +58,23 @@ const pageSizeQuery = new URLSearchParams({ page_size: "100" }).toString();
 
 export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 	public readonly id = "vscode-docker.dockerHub";
+
 	public readonly label = vscode.l10n.t("Docker Hub");
+
 	public readonly description: undefined;
+
 	public readonly iconPath: { light: vscode.Uri; dark: vscode.Uri };
 
 	private readonly authenticationProvider: DockerHubAuthProvider;
 
 	public constructor(extensionContext: vscode.ExtensionContext) {
 		super();
+
 		this.authenticationProvider = new DockerHubAuthProvider(
 			extensionContext.globalState,
 			extensionContext.secrets,
 		);
+
 		this.iconPath = {
 			light: vscode.Uri.joinPath(
 				extensionContext.extensionUri,
@@ -117,6 +122,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 		element?: CommonRegistryItem | undefined,
 	): Promise<CommonRegistryItem[]> {
 		const children = await super.getChildren(element);
+
 		children.forEach((child) => {
 			child.additionalContextValues = [
 				...(child.additionalContextValues || []),
@@ -177,6 +183,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 		do {
 			const response = await httpRequest<{
 				next: string;
+
 				results: [{ name: string }];
 			}>(requestUrl.toString(true), {
 				method: "GET",
@@ -213,6 +220,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			const response = await httpRequest<{
 				next: string;
+
 				results: [{ name: string; last_updated: string }];
 			}>(requestUrl.toString(true), {
 				method: "GET",
@@ -255,6 +263,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 		do {
 			const response = await httpRequest<{
 				next: string;
+
 				namespaces: string[];
 			}>(requestUrl.toString(true), {
 				method: "GET",
@@ -266,6 +275,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 			const jsonResult = await response.json();
 
 			results.push(...(jsonResult.namespaces || []));
+
 			requestUrl = getNextLinkFromBody(jsonResult);
 		} while (requestUrl);
 
@@ -282,6 +292,7 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 		do {
 			const response = await httpRequest<{
 				next: string;
+
 				results: [{ orgname: string }];
 			}>(requestUrl.toString(true), {
 				method: "GET",
@@ -291,7 +302,9 @@ export class DockerHubRegistryDataProvider extends CommonRegistryDataProvider {
 			});
 
 			const jsonResult = await response.json();
+
 			results.push(...jsonResult.results.map((org) => org.orgname));
+
 			requestUrl = getNextLinkFromBody(jsonResult);
 		} while (requestUrl);
 

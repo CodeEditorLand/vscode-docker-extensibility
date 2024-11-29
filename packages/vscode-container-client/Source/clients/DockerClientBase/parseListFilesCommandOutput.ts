@@ -22,6 +22,7 @@ const SupportedFileTypes = [vscode.FileType.Directory, vscode.FileType.File];
 
 type FileMode = {
 	mode?: number;
+
 	fileType: vscode.FileType;
 };
 

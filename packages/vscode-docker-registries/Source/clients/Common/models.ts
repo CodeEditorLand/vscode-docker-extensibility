@@ -14,13 +14,17 @@ export interface CommonRegistryItem
 	extends RegistryItem,
 		ContextValueRegistryItem {
 	readonly parent: CommonRegistryItem | undefined;
+
 	readonly label: string;
+
 	readonly iconPath?:
 		| string
 		| vscode.Uri
 		| { light: string | vscode.Uri; dark: string | vscode.Uri }
 		| vscode.ThemeIcon;
+
 	readonly description?: string;
+
 	readonly baseUrl?: vscode.Uri;
 }
 
@@ -37,6 +41,7 @@ export function isCommonRegistryItem(
 
 export interface CommonRegistryRoot extends CommonRegistryItem {
 	readonly parent: undefined;
+
 	readonly type: "commonroot";
 }
 
@@ -52,7 +57,9 @@ export function isRegistryRoot(
 
 export interface CommonRegistry extends CommonRegistryItem {
 	readonly parent: CommonRegistryItem;
+
 	readonly type: "commonregistry";
+
 	readonly baseUrl: vscode.Uri;
 }
 
@@ -68,7 +75,9 @@ export function isRegistry(
 
 export interface CommonRepository extends CommonRegistryItem {
 	readonly parent: CommonRegistry;
+
 	readonly type: "commonrepository";
+
 	readonly baseUrl: vscode.Uri;
 }
 
@@ -84,8 +93,11 @@ export function isRepository(
 
 export interface CommonTag extends CommonRegistryItem {
 	readonly parent: CommonRepository;
+
 	readonly type: "commontag";
+
 	createdAt?: Date;
+
 	readonly baseUrl: vscode.Uri;
 }
 
@@ -99,6 +111,7 @@ export function isTag(maybeTag: unknown): maybeTag is CommonTag {
 
 export interface CommonError extends CommonRegistryItem {
 	readonly parent: CommonRegistryItem | undefined;
+
 	readonly type: "commonerror";
 }
 

@@ -55,6 +55,7 @@ export abstract class BasicAuthProvider implements AuthenticationProvider {
 		await this.secretStorage.delete(
 			`BasicAuthProvider.${this.storageSubKey}.secret`,
 		);
+
 		await this.storageMemento.update(
 			`BasicAuthProvider.${this.storageSubKey}.username`,
 			undefined,
@@ -68,6 +69,7 @@ export abstract class BasicAuthProvider implements AuthenticationProvider {
 			`BasicAuthProvider.${this.storageSubKey}.username`,
 			credential.username,
 		);
+
 		await this.secretStorage.store(
 			`BasicAuthProvider.${this.storageSubKey}.secret`,
 			credential.secret,
@@ -78,5 +80,6 @@ export abstract class BasicAuthProvider implements AuthenticationProvider {
 		scopes: string[],
 		options?: vscode.AuthenticationGetSessionOptions | undefined,
 	): Promise<vscode.AuthenticationSession & { type: string }>;
+
 	public abstract getLoginInformation?(): Promise<LoginInformation>;
 }

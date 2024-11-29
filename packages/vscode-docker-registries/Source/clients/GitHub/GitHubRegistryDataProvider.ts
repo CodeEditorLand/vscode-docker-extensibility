@@ -41,8 +41,11 @@ export function isGitHubRegistry(item: unknown): item is V2Registry {
 
 export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 	public readonly id = "vscode-docker.githubContainerRegistry";
+
 	public readonly label = vscode.l10n.t("GitHub");
+
 	public readonly description = vscode.l10n.t("GitHub Container Registry");
+
 	public readonly iconPath: vscode.ThemeIcon = new vscode.ThemeIcon("github");
 
 	private readonly authenticationProvider: BasicOAuthProvider;
@@ -90,6 +93,7 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 		element?: CommonRegistryItem | undefined,
 	): Promise<CommonRegistryItem[]> {
 		const children = await super.getChildren(element);
+
 		children.forEach((e) => {
 			e.additionalContextValues = [
 				...(e.additionalContextValues || []),
@@ -212,6 +216,7 @@ export class GitHubRegistryDataProvider extends RegistryV2DataProvider {
 		const results: string[] = [];
 
 		const creds = await this.authenticationProvider.getBasicCredentials();
+
 		results.push(creds.username);
 
 		const requestUrl = vscode.Uri.parse("https://api.github.com/user/orgs");

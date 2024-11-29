@@ -13,6 +13,7 @@ import { Labels } from "../../contracts/ContainerClient";
 export function parseDockerLikeLabels(rawLabels: string): Labels {
 	return rawLabels.split(",").reduce((labels, labelPair) => {
 		const index = labelPair.indexOf("=");
+
 		labels[labelPair.substring(0, index)] = labelPair.substring(index + 1);
 
 		return labels;

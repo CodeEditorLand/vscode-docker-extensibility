@@ -13,11 +13,14 @@ export abstract class ConfigurableClient implements ClientIdentity {
 		description: string,
 	) {
 		this.#commandName = commandName;
+
 		this.#displayName = displayName;
+
 		this.#description = description;
 	}
 
 	#commandName: string;
+
 	public get commandName(): string {
 		return this.#commandName;
 	}
@@ -27,6 +30,7 @@ export abstract class ConfigurableClient implements ClientIdentity {
 	}
 
 	#displayName: string;
+
 	public get displayName(): string {
 		return this.#displayName;
 	}
@@ -36,6 +40,7 @@ export abstract class ConfigurableClient implements ClientIdentity {
 	}
 
 	#description: string;
+
 	public get description(): string {
 		return this.#description;
 	}

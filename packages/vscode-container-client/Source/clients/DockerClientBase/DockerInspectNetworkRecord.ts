@@ -11,25 +11,37 @@ import { dayjs } from "../../utils/dayjs";
 
 export type DockerIpamConfig = {
 	Subnet: string;
+
 	Gateway: string;
 };
 
 export type DockerIpam = {
 	Driver: string;
+
 	Config?: Array<DockerIpamConfig>;
 };
 
 export type DockerInspectNetworkRecord = {
 	Id: string;
+
 	Name: string;
+
 	Driver: string;
+
 	Scope: string;
+
 	Labels: Record<string, string>;
+
 	IPAM: DockerIpam;
+
 	EnableIPv6: boolean;
+
 	Internal: boolean;
+
 	Attachable: boolean;
+
 	Ingress: boolean;
+
 	Created: string;
 };
 

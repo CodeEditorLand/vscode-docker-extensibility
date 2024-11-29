@@ -9,12 +9,19 @@ import { parseDockerLikeLabels } from "./parseDockerLikeLabels";
 
 export type DockerListNetworkRecord = {
 	ID: string;
+
 	Name: string;
+
 	Driver: string;
+
 	Labels: string;
+
 	Scope: string;
+
 	IPv6: string;
+
 	CreatedAt: string;
+
 	Internal: string;
 };
 

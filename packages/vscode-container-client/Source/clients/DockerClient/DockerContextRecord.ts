@@ -5,8 +5,11 @@
 
 export type DockerContextRecord = {
 	Name: string;
+
 	Current: boolean;
+
 	Description?: string;
+
 	DockerEndpoint?: string;
 };
 

@@ -41,9 +41,13 @@ export type RequestLike = RequestInit & {
 
 export interface ResponseLike<T> extends Response {
 	headers: HeadersLike;
+
 	status: number;
+
 	statusText: string;
+
 	succeeded: boolean;
+
 	json: () => Promise<T>;
 }
 

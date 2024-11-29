@@ -16,22 +16,31 @@ import { parseDockerLikeEnvironmentVariables } from "./parseDockerLikeEnvironmen
 
 export type DockerInspectContainerPortHost = {
 	HostIp?: string;
+
 	HostPort?: number;
 };
 
 export type DockerInspectContainerBindMount = {
 	Type: "bind";
+
 	Source: string;
+
 	Destination: string;
+
 	RW: boolean;
 };
 
 export type DockerInspectContainerVolumeMount = {
 	Type: "volume";
+
 	Name: string;
+
 	Source: string;
+
 	Destination: string;
+
 	Driver: string;
+
 	RW: boolean;
 };
 
@@ -41,47 +50,69 @@ export type DockerInspectContainerMount =
 
 export type DockerInspectNetwork = {
 	Gateway: string;
+
 	IPAddress: string;
+
 	MacAddress: string;
 };
 
 export type DockerInspectContainerConfig = {
 	Image: string;
+
 	Status: string;
+
 	Entrypoint: Array<string> | string | null;
+
 	Cmd: Array<string> | string | null;
+
 	Env?: Array<string> | null;
+
 	Labels?: Record<string, string> | null;
+
 	WorkingDir?: string | null;
 };
 
 export type DockerInspectContainerHostConfig = {
 	PublishAllPorts?: boolean | null;
+
 	Isolation?: string;
 };
 
 export type DockerInspectContainerNetworkSettings = {
 	Networks?: Record<string, DockerInspectNetwork> | null;
+
 	IPAddress?: string;
+
 	Ports?: Record<string, Array<DockerInspectContainerPortHost>> | null;
 };
 
 export type DockerInspectContainerState = {
 	Status?: string;
+
 	StartedAt?: string;
+
 	FinishedAt?: string;
 };
 
 export type DockerInspectContainerRecord = {
 	Id: string;
+
 	Name: string;
+
 	Image: string;
+
 	Platform: string;
+
 	Created: string;
+
 	Mounts: Array<DockerInspectContainerMount>;
+
 	State: DockerInspectContainerState;
+
 	Config: DockerInspectContainerConfig;
+
 	HostConfig: DockerInspectContainerHostConfig;
+
 	NetworkSettings: DockerInspectContainerNetworkSettings;
 };
 

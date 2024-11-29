@@ -10,7 +10,9 @@ import { CommonError, CommonRegistryItem } from "./models";
 
 export interface RegistryConnectError extends CommonError {
 	readonly parent: CommonRegistryItem | undefined;
+
 	readonly type: "commonerror";
+
 	readonly additionalContextValues: ["registryConnectError"];
 }
 

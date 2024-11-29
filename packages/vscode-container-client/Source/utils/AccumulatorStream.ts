@@ -15,6 +15,7 @@ type AccumulatorOptions = Omit<stream.WritableOptions, "write" | "writev">;
  */
 export class AccumulatorStream extends stream.Writable {
 	private readonly chunks: Buffer[] = [];
+
 	private readonly streamEndPromise: Promise<void>;
 
 	/**
@@ -30,6 +31,7 @@ export class AccumulatorStream extends stream.Writable {
 				callback: (err?: Error) => void,
 			) => {
 				this.chunks.push(chunk);
+
 				callback();
 			},
 		});

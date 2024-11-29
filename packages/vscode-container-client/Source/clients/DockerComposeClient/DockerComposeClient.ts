@@ -82,10 +82,12 @@ export class DockerComposeClient
 			displayName,
 			description,
 		);
+
 		this.#composeV2 = composeV2;
 	}
 
 	#composeV2: boolean;
+
 	public get composeV2(): boolean {
 		return this.#composeV2;
 	}

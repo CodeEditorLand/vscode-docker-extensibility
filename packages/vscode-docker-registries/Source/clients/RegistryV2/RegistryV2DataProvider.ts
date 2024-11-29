@@ -119,6 +119,7 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 			this.getTagCreatedDate(tag).then(
 				(createdAt) => {
 					tag.createdAt = createdAt;
+
 					this.onDidChangeTreeDataEmitter.fire(tag);
 				},
 				() => {
@@ -155,6 +156,7 @@ export abstract class RegistryV2DataProvider extends CommonRegistryDataProvider 
 		const requestUrl = registry.baseUrl.with({
 			path: `v2/${item.parent.label}/manifests/${digest}`,
 		});
+
 		await registryV2Request({
 			authenticationProvider: this.getAuthenticationProvider(registry),
 			method: "DELETE",

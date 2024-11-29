@@ -36,6 +36,7 @@ export function* range(
 ): Generator<number, void, unknown> {
 	if (typeof stop !== "number") {
 		stop = start;
+
 		start = 0;
 	}
 

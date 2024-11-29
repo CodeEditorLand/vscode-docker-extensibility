@@ -40,8 +40,11 @@ export function isGenericV2Registry(item: unknown): item is V2Registry {
 
 export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 	public readonly id = "vscode-docker.genericRegistryV2DataProvider";
+
 	public readonly label = vscode.l10n.t("Generic Registry V2");
+
 	public readonly description: undefined;
+
 	public readonly iconPath = new vscode.ThemeIcon("link");
 
 	private readonly authenticationProviders = new Map<
@@ -63,6 +66,7 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 		element?: CommonRegistryItem | undefined,
 	): Promise<CommonRegistryItem[]> {
 		const children = await super.getChildren(element);
+
 		children.forEach((e) => {
 			e.additionalContextValues = [
 				...(e.additionalContextValues || []),
@@ -114,6 +118,7 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 				this.extensionContext.secrets,
 				item.baseUrl,
 			);
+
 			this.authenticationProviders.set(registry, provider);
 		}
 
@@ -154,7 +159,9 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 		const trackedRegistryStrings = this.extensionContext.globalState.get<
 			string[]
 		>(TrackedRegistriesKey, []);
+
 		trackedRegistryStrings.push(registryUriString);
+
 		await this.extensionContext.globalState.update(
 			TrackedRegistriesKey,
 			trackedRegistryStrings,
@@ -166,10 +173,12 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 			this.extensionContext.secrets,
 			wizardContext.registryUri,
 		);
+
 		await authProvider.storeBasicCredentials({
 			username: wizardContext.username || "",
 			secret: wizardContext.secret || "",
 		});
+
 		this.authenticationProviders.set(registryUriString, authProvider);
 	}
 
@@ -187,6 +196,7 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 
 		if (index !== -1) {
 			trackedRegistryStrings.splice(index, 1);
+
 			void this.extensionContext.globalState.update(
 				TrackedRegistriesKey,
 				trackedRegistryStrings,
@@ -197,6 +207,7 @@ export class GenericRegistryV2DataProvider extends RegistryV2DataProvider {
 		await this.authenticationProviders
 			.get(registryUriString)
 			?.removeSession();
+
 		this.authenticationProviders.delete(registryUriString);
 	}
 

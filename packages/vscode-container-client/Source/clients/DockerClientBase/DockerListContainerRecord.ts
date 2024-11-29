@@ -14,13 +14,21 @@ import { parseDockerRawPortString } from "./parseDockerRawPortString";
 
 export type DockerListContainerRecord = {
 	ID: string;
+
 	Names: string;
+
 	Image: string;
+
 	Ports: string;
+
 	Networks: string;
+
 	Labels: string;
+
 	CreatedAt: string;
+
 	State?: string;
+
 	Status: string;
 };
 

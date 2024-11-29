@@ -5,11 +5,17 @@
 
 export type DockerVolumeRecord = {
 	Name: string;
+
 	Driver: string;
+
 	Labels: string;
+
 	Mountpoint: string;
+
 	Scope: string;
+
 	CreatedAt?: string;
+
 	Size?: string;
 };
 

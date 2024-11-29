@@ -15,23 +15,37 @@ import { parseDockerLikeEnvironmentVariables } from "./parseDockerLikeEnvironmen
 
 export type DockerInspectImageConfig = {
 	Entrypoint?: Array<string> | string | null;
+
 	Cmd?: Array<string> | string | null;
+
 	Env?: Array<string>;
+
 	Labels?: Record<string, string> | null;
+
 	ExposedPorts?: Record<string, unknown> | null;
+
 	Volumes?: Record<string, unknown> | null;
+
 	WorkingDir?: string | null;
+
 	User?: string | null;
 };
 
 export type DockerInspectImageRecord = {
 	Id: string;
+
 	RepoTags: Array<string>;
+
 	Config: DockerInspectImageConfig;
+
 	RepoDigests: Array<string>;
+
 	Architecture: string;
+
 	Os: string;
+
 	Created: string;
+
 	User?: string;
 };
 

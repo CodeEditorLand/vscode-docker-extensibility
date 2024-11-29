@@ -10,6 +10,7 @@ export class ChildProcessError extends Error {
 		public readonly signal: NodeJS.Signals | null,
 	) {
 		super(message);
+
 		this.name = this.constructor.name;
 	}
 }

@@ -7,11 +7,15 @@ import { EventAction, EventType } from "../../contracts/ContainerClient";
 
 export type DockerEventRecord = {
 	Type: EventType;
+
 	Action: EventAction;
+
 	Actor: {
 		ID: string;
+
 		Attributes: Record<string, unknown>;
 	};
+
 	time: number;
 };
 

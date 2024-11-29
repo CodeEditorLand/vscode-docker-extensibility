@@ -66,7 +66,9 @@ export class ShellStreamCommandRunnerFactory<
 
 				if (accumulator && this.options.stdOutPipe) {
 					const stdOutPassThrough = new stream.PassThrough();
+
 					stdOutPassThrough.pipe(this.options.stdOutPipe);
+
 					stdOutPassThrough.pipe(accumulator);
 
 					stdOutPipe = stdOutPassThrough;
@@ -87,6 +89,7 @@ export class ShellStreamCommandRunnerFactory<
 					throwIfCancellationRequested(
 						this.options.cancellationToken,
 					);
+
 					result = await commandResponse.parse(
 						output,
 						!!this.options.strict,
@@ -139,6 +142,7 @@ export class ShellStreamCommandRunnerFactory<
 
 	protected getCommandAndArgs(commandResponse: CommandResponseBase): {
 		command: string;
+
 		args: CommandLineArgs;
 	} {
 		return commandResponse;

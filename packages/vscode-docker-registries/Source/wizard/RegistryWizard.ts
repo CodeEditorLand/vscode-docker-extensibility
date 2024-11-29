@@ -8,10 +8,12 @@ import { RegistryWizardPromptStep } from "./RegistryWizardPromptStep";
 
 export class RegistryWizard<T extends RegistryWizardContext> {
 	private readonly promptSteps: RegistryWizardPromptStep<T>[];
+
 	private readonly context: T;
 
 	public constructor(context: T, steps: RegistryWizardPromptStep<T>[]) {
 		this.promptSteps = steps.reverse();
+
 		this.context = context;
 	}
 

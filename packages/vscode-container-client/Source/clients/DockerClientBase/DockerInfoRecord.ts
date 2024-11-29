@@ -7,6 +7,7 @@ import { ContainerOS, isContainerOS } from "../../contracts/ContainerClient";
 
 export type DockerInfoRecord = {
 	OperatingSystem?: string;
+
 	OSType?: ContainerOS;
 };
 

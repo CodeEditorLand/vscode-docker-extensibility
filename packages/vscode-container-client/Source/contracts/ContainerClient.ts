@@ -113,6 +113,7 @@ export type VersionCommandOptions = CommonCommandOptions & {
 
 export type VersionItem = {
 	client: string;
+
 	server?: string;
 };
 
@@ -255,6 +256,7 @@ export type EventItem = {
 	 */
 	actor: {
 		id: string;
+
 		attributes: Record<string, unknown>;
 	};
 	/**
@@ -701,15 +703,21 @@ export type PortBinding = {
 
 export type RunContainerBindMount = {
 	type: "bind";
+
 	source: string;
+
 	destination: string;
+
 	readOnly: boolean;
 };
 
 export type RunContainerVolumeMount = {
 	type: "volume";
+
 	source: string;
+
 	destination: string;
+
 	readOnly: boolean;
 };
 
@@ -717,6 +725,7 @@ export type RunContainerMount = RunContainerBindMount | RunContainerVolumeMount;
 
 export type RunContainerExtraHost = {
 	hostname: string;
+
 	ip: string;
 };
 
@@ -1618,8 +1627,10 @@ export type InspectNetworksCommandOptions = CommonCommandOptions & {
 
 export type NetworkIpamConfig = {
 	driver: string;
+
 	config: {
 		subnet: string;
+
 		gateway: string;
 	}[];
 };

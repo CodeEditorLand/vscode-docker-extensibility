@@ -5,6 +5,7 @@
 
 export type DockerInspectContextRecord = {
 	Name: string;
+
 	Metadata?: {
 		Description?: string;
 	};

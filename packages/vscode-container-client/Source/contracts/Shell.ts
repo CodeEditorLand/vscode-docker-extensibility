@@ -9,6 +9,7 @@ import { CommandLineArgs } from "../utils/commandLineBuilder";
 
 export interface IShell {
 	quote(args: CommandLineArgs): Array<string>;
+
 	goTemplateQuotedString(
 		arg: string,
 		quoting: ShellQuoting,

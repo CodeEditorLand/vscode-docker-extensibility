@@ -11,6 +11,7 @@ export class CancellationError extends Error {
 		public readonly token?: CancellationTokenLike,
 	) {
 		super(message);
+
 		this.name = this.constructor.name;
 	}
 }

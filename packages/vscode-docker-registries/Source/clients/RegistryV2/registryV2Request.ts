@@ -12,22 +12,33 @@ import { HeadersLike, httpRequest, RequestLike } from "../../utils/httpRequest";
 
 export interface RegistryV2RequestOptions {
 	method: "GET" | "POST" | "PUT" | "DELETE";
+
 	requestUri: vscode.Uri;
+
 	query?: Record<string, string>;
+
 	scopes: string[];
+
 	headers?: Record<string, string>;
 
 	throwOnFailure?: boolean;
+
 	authenticationProvider: AuthenticationProvider<vscode.AuthenticationGetSessionOptions>;
+
 	sessionOptions?: vscode.AuthenticationGetSessionOptions;
 }
 
 export interface RegistryV2Response<T> {
 	status: number;
+
 	statusText: string;
+
 	succeeded: boolean;
+
 	uri: vscode.Uri;
+
 	headers: HeadersLike;
+
 	body: T | undefined;
 }
 

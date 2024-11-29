@@ -10,6 +10,7 @@ import { CommandLineArgs } from "../utils/commandLineBuilder";
  */
 export type CommandResponseBase = {
 	command: string;
+
 	args: CommandLineArgs;
 };
 
@@ -36,6 +37,7 @@ export type GeneratorCommandResponse<T> = CommandResponseBase & {
  */
 export type VoidCommandResponse = CommandResponseBase & {
 	parse?: never;
+
 	parseStream?: never;
 };
 

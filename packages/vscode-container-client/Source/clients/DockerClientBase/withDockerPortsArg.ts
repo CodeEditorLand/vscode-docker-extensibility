@@ -11,12 +11,15 @@ export function withDockerPortsArg(ports?: Array<PortBinding>) {
 		"--publish",
 		(ports || []).map((port) => {
 			let binding = port.hostIp ? `${port.hostIp}:` : "";
+
 			binding += `${port.hostPort || ""}:`;
+
 			binding += port.containerPort;
 
 			if (port.protocol) {
 				binding += `/${port.protocol}`;
 			}
+
 			return binding;
 		}),
 	);

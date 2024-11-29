@@ -15,8 +15,11 @@ export class BasicOAuthProvider
 	implements AuthenticationProvider
 {
 	private oAuthEndpoint: string | undefined;
+
 	private oAuthService: string | undefined;
+
 	private defaultScopes: string[] | undefined;
+
 	private _didFallback: boolean = false;
 
 	public constructor(
@@ -99,8 +102,11 @@ export class BasicOAuthProvider
 		}
 
 		this.oAuthEndpoint = match.groups.realm;
+
 		this.oAuthService = match.groups.service;
+
 		this.defaultScopes = match.groups.scope.split(" ");
+
 		this._didFallback = true;
 	}
 
