@@ -1,10 +1,17 @@
 {
-	"name": "@microsoft/vscode-docker-extensibility",
-	"scripts": {
-		"build": "npm run -ws build"
-	},
+	"name": "@codeeditorland/docker-extensibility",
+	"version": "0.0.0",
+	"author": "Microsoft Corporation",
 	"workspaces": [
 		"packages/vscode-container-client",
 		"packages/vscode-docker-registries"
-	]
+	],
+	"scripts": {
+		"build": "npm run -ws build",
+		"lint": "npm run -ws lint",
+		"package": "npm run -ws package",
+		"test": "npm run -ws test"
+	},
+	"dependencies": {},
+	"devDependencies": {}
 }
